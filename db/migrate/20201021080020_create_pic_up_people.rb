@@ -1,0 +1,17 @@
+class CreatePicUpPeople < ActiveRecord::Migration[5.2]
+  def change
+    create_table :pic_up_people do |t|
+      t.string :family_name
+      t.string :family_name_kana
+      t.string :first_name
+      t.string :first_name_kana
+      t.date :birth_date
+      t.string :post_code
+      t.string :address
+      t.string :telephone
+      t.string :relationship
+
+      t.timestamps
+    end
+  end
+end

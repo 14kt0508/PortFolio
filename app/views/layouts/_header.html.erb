@@ -1,0 +1,34 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="container">
+    <nav class='nav navbar-nav navbar-left' >
+      <span>れんらくChild</span>
+          <%= csrf_meta_tags %>
+          <%= csp_meta_tag %>
+          <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+          <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    </nav>
+
+    <nav>
+      <ul class="nav navbar-nav navbar-right">
+        <% if admin_signed_in? %>
+            <li class="nav-list-item"><%= link_to '園児名簿', admin_children_path %></li>
+            <li class="nav-list-item"><%= link_to '会員一覧', admin_users_path %></li>
+            <li class="nav-list-item"><%= link_to '予定表', admin_calendars_path %></li>
+            <li class="nav-list-item"><%= link_to '連絡', admin_contacts_path %></li>
+            <li class="nav-list-item"><%= link_to '管理者', admin_admins_user_path %></li>
+            <li class="nav-list-item"><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %></li>
+          <% elsif user_signed_in? %>
+            <li class="nav-list-item"><%= link_to 'マイページ', users_path %></li>
+            <li class="nav-list-item"><%= link_to '予定表', calendars_path %></li>
+            <li class="nav-list-item"><%= link_to '連絡網', contacts_path %></li>
+            <li class="nav-list-item"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+          <% else %>
+            <li class="nav-list-item"><%= link_to 'About', about_path %></li>
+            <li class="nav-list-item"><%= link_to '新規登録', new_user_registration_path %></li>
+            <li class="nav-list-item"><%= link_to 'ログイン', new_user_session_path %></li>
+            <div class="collapse navbar-collapse" id="navbarEexample8"></div>
+          <% end %>
+      </ul>
+    </nav>
+  </div>
+</header>
