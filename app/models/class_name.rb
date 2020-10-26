@@ -1,6 +1,7 @@
 class ClassName < ApplicationRecord
 
-	belongs_to :event_class
-	belongs_to :child
+	has_many :event_classes
+	has_many :children
 
+	validates :name, presence: true
 end

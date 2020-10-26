@@ -1,11 +1,11 @@
 class Users::ChildrenController < ApplicationController
 
 	def new
-		@children = Children.new
+		@children = Child.new
 	end
 
 	def create
-		@children = Children.new(children_params)
+		@children = Child.new(children_params)
 	    if @cildren.save
 	      flash[:success] = "登録に成功しました"
 	      redirect_to users_path_path(@children)
@@ -17,11 +17,11 @@ class Users::ChildrenController < ApplicationController
 	end
 
 	def edit
-		@children = Children.find(params[:id])
+		@children = Child.find(params[:id])
 	end
 
 	def update
-		@children = Children.find(params[:id])
+		@children = Child.find(params[:id])
 	    if @cildren.update
 	      flash[:success] = "情報が更新されました"
 	      redirect_to users_path_path(@children)
@@ -32,8 +32,8 @@ class Users::ChildrenController < ApplicationController
 	end
 
 	def destroy
-		@children = Children.all
-		@children = Children.find(params[:id])
+		@children = Child.all
+		@children = Child.find(params[:id])
 		@children = destroy
 		flash[:success] = "情報が削除されました"
   		redirect_to users_path

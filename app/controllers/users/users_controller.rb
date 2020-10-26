@@ -2,12 +2,16 @@ class Users::UsersController < ApplicationController
 
 	def index
 		@users =User.all
-		@children = Children.all
+		@children = Child.all
 		@pick_up_person = Pick_up_person.all
 	end
 
 	def show
 		@user = User.find(params[:id])
+		@children = Child.all
+		@pick_up_person = PicUpPerson.all
+		# @children = Child.where()
+		# @pick_up_person = PicUpPerson.where()
 	end
 
 	def edit
@@ -16,9 +20,9 @@ class Users::UsersController < ApplicationController
 
 	def update
 		@user = User.find(params[:id])
-		if @usrer.update(user_params)
-			redirect_to users_path
+		if @user.update(user_params)
 			flash[:change] = "会員情報を更新しました"
+			redirect_to user_path
 		else
 			render :edit
 		end

@@ -2,23 +2,19 @@
   <div class="container">
     <nav class='nav navbar-nav navbar-left' >
       <span>れんらくChild</span>
-          <%= csrf_meta_tags %>
-          <%= csp_meta_tag %>
-          <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-          <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     </nav>
 
     <nav>
       <ul class="nav navbar-nav navbar-right">
         <% if admin_signed_in? %>
-            <li class="nav-list-item"><%= link_to '園児名簿', admin_children_path %></li>
-            <li class="nav-list-item"><%= link_to '会員一覧', admin_users_path %></li>
-            <li class="nav-list-item"><%= link_to '予定表', admin_calendars_path %></li>
-            <li class="nav-list-item"><%= link_to '連絡', admin_contacts_path %></li>
-            <li class="nav-list-item"><%= link_to '管理者', admin_admins_user_path %></li>
+            <li class="nav-list-item"><%= link_to '園児名簿', admins_children_path %></li>
+            <li class="nav-list-item"><%= link_to '会員一覧', admins_users_path %></li>
+            <li class="nav-list-item"><%= link_to '予定表', admins_calendars_path %></li>
+            <li class="nav-list-item"><%= link_to '連絡', admins_contacts_path %></li>
+            <li class="nav-list-item"><%= link_to '管理者', admins_admins_user_path(current_admin) %></li>
             <li class="nav-list-item"><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %></li>
           <% elsif user_signed_in? %>
-            <li class="nav-list-item"><%= link_to 'マイページ', users_path %></li>
+            <li class="nav-list-item"><%= link_to 'マイページ', user_path(current_user) %></li>
             <li class="nav-list-item"><%= link_to '予定表', calendars_path %></li>
             <li class="nav-list-item"><%= link_to '連絡網', contacts_path %></li>
             <li class="nav-list-item"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>

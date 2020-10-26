@@ -1,0 +1,79 @@
+<h2>登録情報編集</h2>
+
+<%= form_for(@user) do |f| %>
+  <%= render 'layouts/errors', model: f.object %>
+
+  <table class='table'>
+    <tr>
+      <th>名前</th>
+      <td>
+        <div class="field">
+          <%= f.label :姓,style: "color:000;" %>
+          <%= f.text_field :family_name,:size=>"20" %>
+          </div>
+      </td>
+      <td>
+        <div class="field">
+          <%= f.label :名,style: "color:000;" %>
+          <%= f.text_field :first_name,:size=>"20" %>
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <th>フリガナ</th>
+      <td>
+        <div class="field">
+          <%= f.label :セイ,style: "color:000;" %>
+          <%= f.text_field :family_name_kana,:size=>"20" %>
+        </div>
+      </td>
+      <td>
+        <div class="field">
+          <%= f.label :メイ,style: "color:000;" %>
+          <%= f.text_field :first_name_kana,:size=>"20" %>
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <th>郵便番号</th>
+      <td>
+        <div class="field blank">
+          <%= f.text_field :post_code,:size=>"21" %>
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <th>住所</th>
+      <td>
+        <div class="field blank" >
+          <%= f.text_area :address, class: "introduction" %>
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <th>電話番号(ハイフンなし)</th>
+      <td>
+        <div class="field blank">
+          <%= f.text_area :telephone, class: "introduction" %>
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <th>メールアドレス</th>
+      <td>
+        <div class="field blank">
+          <%= f.text_field :email,:size=>"21" %>
+        </div>
+      </td>
+    </tr>
+  </table>
+
+  <div class="actions">
+    <%= f.submit "更新"%>
+  </div>
+<% end %>

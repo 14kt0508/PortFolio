@@ -22,6 +22,7 @@ class Admins::ContactsController < ApplicationController
     	else
       		flash.now[:danger]="商品登録に失敗しました"
 	      	render 'new'
+    	end
     end
 
 end

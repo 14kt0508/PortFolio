@@ -12,37 +12,34 @@
 //
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
-//= require_tree .
-
 //= require jquery3
+//= require turbolinks
 //= require popper
 //= require bootstrap-sprockets
-
 //= require moment
 //= require fullcalendar
+//= require fullcalendar/locale-all
 //= require_tree .
-$(function () {
+
+$(document).on('turbolinks:load', function () {
     // 画面遷移を検知
-    $(document).on('turbolinks:load', function () {
-        if ($('#calendar').length) {
+    if ($('#calendar').length) {
+        console.log($('#calendar').length)
 
-            function Calendar() {
-                return $('#calendar').fullCalendar({
-                });
-            }
-            function clearCalendar() {
-                $('#calendar').html('');
-            }
-
-            $(document).on('turbolinks:load', function () {
-                Calendar();
-            });
-            $(document).on('turbolinks:before-cache', clearCalendar);
-
-            //events: '/events.json', 以下に追加
-            $('#calendar').fullCalendar({
+        function Calendar() {
+            //return $('#calendar').fullCalendar({});
+            return $('#calendar').fullCalendar({
                 events: '/events.json',
+                // events: [
+                //     {
+                //         "id":"1",
+                //         "title":"タイトル",
+                //         "description":"説明",
+                //         "start": new Date('2020-10-25'),
+                //         "end":new Date('2020-10-25'),
+                //         "url":"some_address"
+                //     }
+                // ],
                 //カレンダー上部を年月で表示させる
                 titleFormat: 'YYYY年 M月',
                 //曜日を日本語表示
@@ -79,5 +76,14 @@ $(function () {
                 }
             });
         }
-    });
+        function clearCalendar() {
+            $('#calendar').html('');
+        }
+        console.log(11)
+        Calendar();
+        $(document).on('turbolinks:before-cache', clearCalendar);
+
+        //events: '/events.json', 以下に追加
+
+    }
 });

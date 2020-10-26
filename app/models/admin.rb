@@ -6,4 +6,6 @@ class Admin < ApplicationRecord
 
   has_many :contacts, dependent: :destroy
 
+  validates :facility_name, presence: true, length: {maximum: 30, minimum: 2}
+
 end

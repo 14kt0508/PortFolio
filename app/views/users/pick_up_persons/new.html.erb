@@ -1,0 +1,87 @@
+<h2>送迎者情報登録</h2>
+  <p id="notice"><%= notice %></p>
+	<%= form_with url: pick_up_persons_path, method: :post ,local:true do |f| %>
+	<%= render 'layouts/error', model: f.object %>
+	  <table class='table'>
+    <tr>
+      <th>名前</th>
+      <td>
+        <div class="field">
+          <%= f.label :姓,style: "color:000;" %>
+          <%= f.text_field :family_name,:size=>"20" %>
+          </div>
+      </td>
+      <td>
+        <div class="field">
+          <%= f.label :名,style: "color:000;" %>
+          <%= f.text_field :first_name,:size=>"20" %>
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <th>フリガナ</th>
+      <td>
+        <div class="field">
+          <%= f.label :セイ,style: "color:000;" %>
+          <%= f.text_field :family_name_kana,:size=>"20" %>
+        </div>
+      </td>
+      <td>
+        <div class="field">
+          <%= f.label :メイ,style: "color:000;" %>
+          <%= f.text_field :first_name_kana,:size=>"20" %>
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <th>生年月日</th>
+      <td>
+        <div class="field blank">
+          <%= f.text_area :birth_date, class: "birth_date" %>
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <th>郵便番号</th>
+      <td>
+        <div class="field blank">
+          <%= f.text_field :post_code,:size=>"21" %>
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <th>住所</th>
+      <td>
+        <div class="field blank" >
+          <%= f.text_area :address, class: "address" %>
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <th>電話番号(ハイフンなし)</th>
+      <td>
+        <div class="field blank">
+          <%= f.text_area :telephone, class: "telephone" %>
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <th>関係性</th>
+      <td>
+        <div class="field blank">
+          <%= f.text_area :relationship, class: "introduction" %>
+        </div>
+      </td>
+    </tr>
+  </table>
+
+  <div class="actions">
+    <%= f.submit "登録"%>
+  </div>
+<% end %>

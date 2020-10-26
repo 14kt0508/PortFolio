@@ -8,18 +8,18 @@ Rails.application.routes.draw do
 		registrations: 'admins/registrations',
 		passwords: 'admins/passwords'
 		}
-	resources :admins
+	# resources :admins
 
 	devise_for :users, controllers: {
 	    sessions: 'users/sessions',
 	    registrations: 'users/registrations',
 	    passwords: 'users/passwords'
 		}
-	resources :users
+	# resources :users
 
 
 
-	namespace :admin do
+	namespace :admins do
 		resources :admins_users, only: [:show, :edit, :update, :destroy]
 		resources :children, only: [:index]
 		resources :users, only: [:index, :show,]
@@ -40,7 +40,7 @@ Rails.application.routes.draw do
 		resources :children, only: [:new, :create, :edit, :update, :destroy]
 		resources :pick_up_persons, only: [:new, :create, :edit, :update, :destroy]
 		resources :calendars, only: [:index]
-		resources :events, only: [:show]
+		resources :events, only: [:index, :show]
 		resources :contacts, only: [:index, :show]
 	end
 
