@@ -1,7 +1,5 @@
-<%= form_for @contact, url: {action: 'confirm'} do |f| # <= 変更 %>
-<!--   <% if @task.errors.any? %>
-    # 中略
-  <% end %> -->
+<%= form_for @contact, url: {action: 'confirm'} do |f| %>
+  <% if @task.errors.any? %>
 
   <div class="field">
     <%= f.label :time %><br>
@@ -27,7 +25,7 @@
     <%= f.submit '確認する' %>
   </div>
 <% end %>
-
+<% end %>
 
 <!--
 <script type="text/javascript">

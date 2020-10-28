@@ -1,10 +1,10 @@
-<%#= render 'layouts/errors', model: f.object %>
-
 <div class="container">
-  	<h1 style="margin-top: 120px;">連絡一覧</h1>
+  	<h1>連絡一覧</h1>
 
 	<p id="notice"><%= notice %></p>
-
+	<div class="new-btn-wrap">
+	    <%= link_to "連絡新規作成", new_admins_contact_path, class: "btn btn-primary col-xs-12"; %>
+	</div>
 
 	<table class="table">
 		<thead>

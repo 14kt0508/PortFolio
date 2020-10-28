@@ -25,7 +25,7 @@ Rails.application.routes.draw do
 		resources :users, only: [:index, :show,]
 		resources :calendars, only: [:index,]
 		resources :events, only: [:new, :create, :show, :edit, :update, :destroy]
-		resources :contacts, only: [:index, :create] do
+		resources :contacts, only: [:index, :new, :create] do
     		collection do
       			post 'confirm'
     		end
