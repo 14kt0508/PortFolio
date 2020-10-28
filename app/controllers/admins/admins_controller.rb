@@ -1,4 +1,5 @@
-class Admins::AdminsUsersController < ApplicationController
+class Admins::AdminsController < ApplicationController
+
 	before_action :authenticate_admin!
 
 	def show
@@ -11,9 +12,9 @@ class Admins::AdminsUsersController < ApplicationController
 
 	def update
 		@admin_user = Admin.find(params[:id])
-		if @admin_user.update(asmin_user_params)
+		if @admin_user.update(admin_user_params)
       		flash[:success] = "更新に成功しました"
-      		redirect_to admin_admins_user_path(@admin_user)
+      		redirect_to admins_admin_path(@admin_user)
     	else
       		flash.now[:danger]="更新に失敗しました"
       		render "edit"
@@ -28,7 +29,7 @@ class Admins::AdminsUsersController < ApplicationController
 	private
 
 	def admin_user_params
-		params.require(:admin_user).permit(:facility_name, :email)
+		params.require(:admin).permit(:facility_name, :email)
 	end
 
 end

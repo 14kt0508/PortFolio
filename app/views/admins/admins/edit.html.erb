@@ -1,0 +1,27 @@
+<h2>登録情報編集</h2>
+
+<%= form_for(@admin_user, url: admins_admin_path(@admin_user)) do |f| %>
+  <%= render 'layouts/errors', model: f.object %>
+
+    <table class='table'>
+
+	    <th>氏名</th>
+	    <td>
+	        <div class="field">
+	          <%= f.label :姓,style: "color:000;" %>
+	          <%= f.text_field :facility_name,:size=>"20" %>
+	          </div>
+	    </td>
+
+	    <th>メールアドレス</th>
+	    <td>
+	    	<div class="field blank">
+	          	<%= f.text_field :email,:size=>"20" %>
+	        </div>
+	    </td>
+    </table>
+
+  <div class="actions">
+    <%= f.submit "更新"%>
+  </div>
+<% end %>

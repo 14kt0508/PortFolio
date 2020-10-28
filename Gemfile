@@ -89,3 +89,8 @@ gem 'kaminari', '~> 0.17.0'
 gem 'momentjs-rails'
 
 gem 'fullcalendar-rails'
+
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end

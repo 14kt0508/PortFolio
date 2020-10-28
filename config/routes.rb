@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 
 
 	namespace :admins do
-		resources :admins_users, only: [:show, :edit, :update, :destroy]
+		resources :admins, only: [:show, :edit, :update, :destroy]
 		resources :children, only: [:index]
 		resources :users, only: [:index, :show,]
 		resources :calendars, only: [:index,]
