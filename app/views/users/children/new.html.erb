@@ -1,0 +1,97 @@
+<h2>送迎者情報登録</h2>
+  <p id="notice"><%= notice %></p>
+	<%= form_with url: children_path, method: :post ,local:true do |f| %>
+	<%#= render 'layouts/error', model: f.object %>
+	  <table class='table'>
+    <tr>
+      <th>名前</th>
+      <td>
+        <div class="field">
+          <%= f.label :姓,style: "color:000;" %>
+          <%= f.text_field :family_name,:size=>"20" %>
+          </div>
+      </td>
+      <td>
+        <div class="field">
+          <%= f.label :名,style: "color:000;" %>
+          <%= f.text_field :first_name,:size=>"20" %>
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <th>フリガナ</th>
+      <td>
+        <div class="field">
+          <%= f.label :セイ,style: "color:000;" %>
+          <%= f.text_field :family_name_kana,:size=>"20" %>
+        </div>
+      </td>
+      <td>
+        <div class="field">
+          <%= f.label :メイ,style: "color:000;" %>
+          <%= f.text_field :first_name_kana,:size=>"20" %>
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <th>生年月日</th>
+      <td>
+        <div class="field blank">
+          <%= f.text_area :birth_date, class: "birth_date" %>
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <th>クラス</th>
+      <td>
+        <div class="field blank">
+          <%= f.text_field :class_name,:size=>"20" %>
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <th>お迎え者</th>
+      <td>
+        <div class="field blank" >
+          <%= f.text_area :pick_up_person, class: "pick_up_person" %>
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <th>お迎え時間</th>
+      <td>
+        <div class="field blank">
+          <%= f.text_area :pick_up_time, class: "pick_up_time" %>
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <th>アレルギー</th>
+      <td>
+        <div class="field blank">
+          <%= f.text_area :allergies, class: "allergies" %>
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <th>特記事項</th>
+      <td>
+        <div class="field blank">
+          <%= f.text_area :remarks, class: "remarks" %>
+        </div>
+      </td>
+    </tr>
+
+  </table>
+
+  <div class="actions">
+    <%= f.submit "登録"%>
+  </div>
+<% end %>

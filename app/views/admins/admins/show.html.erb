@@ -1,0 +1,19 @@
+<div class='row'>
+
+  <div class='col-xs-3'>
+    <h2>管理者情報</h2>
+    <table class='table'>
+      <tr>
+        <th>氏名</th>
+        <th><%= @admin_user.facility_name %>
+        </th>
+      </tr>
+
+      <tr>
+        <th>メールアドレス</th>
+        <th><%= @admin_user.email %></th>
+      </tr>
+    </table>
+    <%= link_to "編集", edit_admins_admin_path, class: "btn btn-primary btn-new-register btn-xs"; %>
+  </div>
+</div>

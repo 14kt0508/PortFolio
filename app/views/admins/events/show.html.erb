@@ -1,0 +1,27 @@
+<h1>イベント詳細</h1>
+
+    <table class='table'>
+      <tr>
+        <th>日時</th>
+        <th><%= @event.time %>
+        </th>
+      </tr>
+
+      <tr>
+        <th>イベント名</th>
+        <th><%= @event.title %></th>
+      </tr>
+
+      <tr>
+        <th>対象クラス</th>
+        <th><%= @class_name.name %></th>
+      </tr>
+
+      <tr>
+        <th>イベント内容</th>
+        <th><%= @event.body %></th>
+      </tr>
+    </table>
+    <%= link_to "編集", admin_event_path, class: "btn btn-primary btn-new-register btn-xs"; %>
+  </div>
+</div>

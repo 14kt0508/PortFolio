@@ -1,0 +1,43 @@
+<div class="container">
+	<div class="row">
+		<h2>子ども一覧</h2>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>クラス名</th>
+					<th>園児名</th>
+					<th>お迎え者</th>
+					<th>お迎え時間</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<% @children.each do |child| %>
+					<tr>
+						<td>
+							<% @class_name.each do |name| %>
+								<%= child.class_name.id %>
+							<% end %>
+						</td>
+
+						<td>
+							<%= link_to admin_user_path(user.id) do %>
+								<%= child.family_name %><%= child.first_name %>
+								<%= child.family_name_kana %><%= child.first_name_kana %>
+	            			<% end %>
+						</td>
+
+						<td>
+							<%= child.pick_up_person %>
+						</td>
+
+						<td>
+							<%= child.pick_up_time %>
+						</td>
+					</tr>
+				<% end %>
+				<%= paginate @children %>
+			</tbody>
+		</table>
+	</div>
+</div>

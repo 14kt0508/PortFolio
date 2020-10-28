@@ -1,0 +1,40 @@
+<div class="container">
+	<div class="row">
+		<h2>会員一覧</h2>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>氏名</th>
+					<th>住所</th>
+					<th>緊急連絡先</th>
+					<th>メールアドレス</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<% @users.each do |user| %>
+					<tr>
+						<td>
+							<%= link_to admins_user_path(user.id) do %>
+								<%= user.family_name %><%= user.first_name %>
+	            			<% end %>
+						</td>
+
+						<td>
+							<%= user.post_code %><%= user.address %>
+						</td>
+
+						<td>
+							<%= user.telephone %>
+						</td>
+
+						<td>
+							<%= user.email %>
+						</td>
+					</tr>
+				<% end %>
+				<%= paginate @users %>
+			</tbody>
+		</table>
+	</div>
+</div>

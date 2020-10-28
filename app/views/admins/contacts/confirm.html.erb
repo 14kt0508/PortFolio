@@ -1,0 +1,16 @@
+<%= form_for @contact do |f| %>
+  <div class="field">
+    title: <%= @contact.title %>
+    <%= f.hidden_field :title   # <=データ保持 %>
+  </div>
+  <div class="field">
+    content: <%= @contact.content %>
+    <%= f.hidden_field :content # <=データ保持 %>
+  </div>
+  <div class="actions">
+    <%= f.submit 'Back!', name: 'back'  # <=戻る為のname %>
+  </div>
+  <div class="actions">
+    <%= f.submit '送信' %>
+  </div>
+<% end %>
