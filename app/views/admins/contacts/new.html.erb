@@ -1,5 +1,5 @@
 <%= form_for @contact, url: {action: 'confirm'} do |f| %>
-  <% if @task.errors.any? %>
+  <% if @contact.errors.any? %>
 
   <div class="field">
     <%= f.label :time %><br>

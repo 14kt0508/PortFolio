@@ -1,6 +1,7 @@
 class CreatePicUpPeople < ActiveRecord::Migration[5.2]
   def change
     create_table :pic_up_people do |t|
+      t.integer :user_id
       t.string :family_name
       t.string :family_name_kana
       t.string :first_name

@@ -4,6 +4,8 @@ class Admins::AdminsController < ApplicationController
 
 	def show
 		@admin_user = Admin.find(params[:id])
+		@children = Child.all
+		@pick_up_person = PicUpPerson.all
 	end
 
 	def edit

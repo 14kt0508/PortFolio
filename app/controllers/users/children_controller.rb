@@ -42,7 +42,7 @@ class Users::ChildrenController < ApplicationController
 	private
 
 	def children_params
-		params.require(:children).permit(:family_name, :first_name, :family_name_kana, :first_name_kana, :birth_date, :class_name, :pick_up_person, :pick_up_time, :allergies, :remarks)
+		params.require(:children).permit(:user_id, :family_name, :first_name, :family_name_kana, :first_name_kana, :birth_date, :class_name, :pick_up_person, :pick_up_time, :allergies, :remarks)
 	end
 
 end

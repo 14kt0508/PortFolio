@@ -5,7 +5,14 @@ class Users::PickUpPersonsController < ApplicationController
 	end
 
 	def create
-		@pick_up_person = PicUpPerson.new
+		@pick_up_person = PicUpPerson.new(pick_up_persn_params)
+		if @pick_up_person.save
+	      flash[:success] = "登録に成功しました"
+	      redirect_to users_path_path(@pick_up_person)
+	    else
+	      flash.now[:danger]="登録に失敗しました"
+	      render 'new'
+	    end
 
 	end
 
@@ -32,7 +39,7 @@ class Users::PickUpPersonsController < ApplicationController
   		redirect_to users_path
 	end
 
-	def children_params
+	def pick_up_person_params
 		params.require(:pick_up_person).permit(:family_name, :first_name, :family_name_kana, :first_name_kana, :birth_date, :post_code, :address, :telephone, :relationship)
 	end
 

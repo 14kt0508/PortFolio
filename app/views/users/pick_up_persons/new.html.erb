@@ -38,9 +38,18 @@
     <tr>
       <th>生年月日</th>
       <td>
-        <div class="field blank">
-          <%= f.text_area :birth_date, class: "birth_date" %>
-        </div>
+<!--         <div class="field blank"> -->
+          <%#= f.text_area :birth_date, class: "birth_date" %>
+          <div class="birth_date_field">
+            <%#= f.label :birthday %>
+            <%= f.date_select(
+                  :birth_date,
+                  use_month_numbers: true,
+                  start_year: 1930,
+                  end_year: (Time.now.year),
+                  default: Date.new(1989, 1, 1))%>
+          </div>
+<!--         </div> -->
       </td>
     </tr>
 
