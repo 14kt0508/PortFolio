@@ -5,13 +5,43 @@
 
     <table class='table'>
 
-	    <th>氏名</th>
+	    <th>施設名</th>
 	    <td>
 	        <div class="field">
-	          <%= f.label :姓,style: "color:000;" %>
-	          <%= f.text_field :facility_name,:size=>"20" %>
+	          <%= f.select :facility_id, options_for_select(Facility.all.map{|i| [i[:facility_name], i[:id]] }), include_blank: "選択して下さい" %>
 	          </div>
 	    </td>
+	    <tr>
+	      <th>名前</th>
+	      <td>
+	        <div class="field">
+	          <%= f.label :姓,style: "color:000;" %>
+	          <%= f.text_field :family_name,:size=>"20" %>
+	          </div>
+	      </td>
+	      <td>
+	        <div class="field">
+	          <%= f.label :名,style: "color:000;" %>
+	          <%= f.text_field :first_name,:size=>"20" %>
+	        </div>
+	      </td>
+	    </tr>
+
+	    <tr>
+	      <th>フリガナ</th>
+	      <td>
+	        <div class="field">
+	          <%= f.label :セイ,style: "color:000;" %>
+	          <%= f.text_field :family_name_kana,:size=>"20" %>
+	        </div>
+	      </td>
+	      <td>
+	        <div class="field">
+	          <%= f.label :メイ,style: "color:000;" %>
+	          <%= f.text_field :first_name_kana,:size=>"20" %>
+	        </div>
+	      </td>
+	    </tr>
 
 	    <th>メールアドレス</th>
 	    <td>

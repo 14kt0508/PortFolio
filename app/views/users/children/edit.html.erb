@@ -1,0 +1,107 @@
+<h2>登録情報編集</h2>
+
+<%= form_for(@children, url: child_path(@children)) do |f| %>
+  <%= render 'layouts/errors', model: f.object %>
+
+    <table class='table'>
+
+	    <tr>
+	      <th>名前</th>
+	      <td>
+	        <div class="field">
+	          <%= f.label :姓,style: "color:000;" %>
+	          <%= f.text_field :family_name,:size=>"20" %>
+	          </div>
+	      </td>
+	      <td>
+	        <div class="field">
+	          <%= f.label :名,style: "color:000;" %>
+	          <%= f.text_field :first_name,:size=>"20" %>
+	        </div>
+	      </td>
+	    </tr>
+
+	    <tr>
+	      <th>フリガナ</th>
+	      <td>
+	        <div class="field">
+	          <%= f.label :セイ,style: "color:000;" %>
+	          <%= f.text_field :family_name_kana,:size=>"20" %>
+	        </div>
+	      </td>
+	      <td>
+	        <div class="field">
+	          <%= f.label :メイ,style: "color:000;" %>
+	          <%= f.text_field :first_name_kana,:size=>"20" %>
+	        </div>
+	      </td>
+	    </tr>
+
+	    <tr>
+		    <th>生年月日</th>
+		    <td>
+		<!--         <div class="field blank"> -->
+		     <%#= f.text_area :birth_date, class: "birth_date" %>
+		        <div class="birth_date_field">
+		            <%#= f.label :birthday %>
+		            <%= f.date_select(
+		                  :birth_date,
+		                  use_month_numbers: true,
+		                  start_year: 1930,
+		                  end_year: (Time.now.year),
+		                  default: Date.new(1989, 1, 1)) %>
+		        </div>
+<!--         </div> -->
+      		</td>
+    	</tr>
+
+	    <tr>
+	      <th>クラス</th>
+	      <td>
+	        <div class="field blank">
+	          <%= f.select :class_name_id, options_for_select(ClassName.all.map{|i| [i[:class_name], i[:id]] }), include_blank: "選択して下さい" %>
+	        </div>
+	      </td>
+	    </tr>
+
+	    <tr>
+	      <th>お迎え者</th>
+	      <td>
+	        <div class="field blank" >
+	          <%= f.text_area :pick_up_person, class: "pick_up_person" %>
+	        </div>
+	      </td>
+	    </tr>
+
+	    <tr>
+	      <th>お迎え時間</th>
+	      <td>
+	        <div class="field blank">
+	          <%= f.text_area :pick_up_time, class: "pick_up_time" %>
+	        </div>
+	      </td>
+	    </tr>
+
+	    <tr>
+	      <th>アレルギー</th>
+	      <td>
+	        <div class="field blank">
+	          <%= f.text_area :allergies, class: "allergies" %>
+	        </div>
+	      </td>
+	    </tr>
+
+	    <tr>
+	      <th>特記事項</th>
+	      <td>
+	        <div class="field blank">
+	          <%= f.text_area :remarks, class: "remarks" %>
+	        </div>
+	      </td>
+	    </tr>
+    </table>
+
+  <div class="actions">
+    <%= f.submit "更新"%>
+  </div>
+<% end %>

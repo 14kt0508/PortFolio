@@ -73,7 +73,12 @@ $(document).on('turbolinks:load', function () {
                 eventRender: function(event, element) {
                     element.css("font-size", "0.8em");
                     element.css("padding", "5px");
-                }
+                },
+                eventClick: function(event, jsEvent, view) {
+                //クリックしたイベントのタイトルが取れるよ
+                //本番はURl変更必要
+                location.href=`http://localhost:3000/admins/events/${event.id}`;
+              }
             });
         }
         function clearCalendar() {

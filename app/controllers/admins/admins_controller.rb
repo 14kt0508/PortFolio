@@ -31,7 +31,7 @@ class Admins::AdminsController < ApplicationController
 	private
 
 	def admin_user_params
-		params.require(:admin).permit(:facility_name, :email)
+		params.require(:admin).permit(:facility_id, :family_name, :family_name_kana, :first_name, :first_name_kana, :email)
 	end
 
 end

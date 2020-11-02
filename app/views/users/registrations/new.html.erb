@@ -1,66 +1,131 @@
-<div style="margin: 100px;">
+<div class = "row">
+  <div class = "col-md-3 offset-md-3">
+    <h3 style="margin-top: 50px;">新規登録</h3><br />
+  </div>
+</div>
 
-  <%= form_for(resource, as: resource_name, url: user_registration_path) do |f| %>
+<%= form_for(resource, as: resource_name, url: user_registration_path) do |f| %>
     <%= render "users/shared/error_messages", resource: resource %>
 
-    <h3>新規登録</h3>
-
-    <div class="field">
-      <%= f.label :family_name %><br />
-      <%= f.text_field :family_name, autofocus: true, class: "family_name" %>
+  <div class="field">
+    <div class = "row">
+      <div class = "col-md-3 offset-md-3 text-light">
+        <span>苗字</span>
+      </div>
+      <div class = "col-md-3">
+        <%= f.text_field :family_name, class: "form-control", autofocus: true, placeholder:"田中", autocomplete: "family_name" %><br />
+      </div>
     </div>
+  </div>
 
-
-    <div class="field">
-      <%= f.label :first_name %><br />
-      <%= f.text_field :first_name, autofocus: true, class: "first_name" %>
+  <div class="field">
+    <div class = "row">
+      <div class = "col-md-3 offset-md-3 text-light">
+        <span>名前</span>
+      </div>
+      <div class = "col-md-3">
+        <%= f.text_field :first_name, class: "form-control", autofocus: true, placeholder:"太郎", autocomplete: "first_name" %><br />
+      </div>
     </div>
+  </div>
 
-    <div class="field">
-      <%= f.label :family_name_kana %> (カタカナ)<br />
-      <%= f.text_field :family_name_kana, autofocus: true, class: "family_name_kana" %>
+  <div class="field">
+    <div class = "row">
+      <div class = "col-md-3 offset-md-3 text-light">
+        <span>苗字(カナ)</span>
+      </div>
+      <div class = "col-md-3">
+        <%= f.text_field :family_name_kana, class: "form-control", autofocus: true, placeholder:"タナカ", autocomplete: "family_name_kana" %><br />
+      </div>
     </div>
+  </div>
 
-    <div class="field">
-      <%= f.label :first_name_kana %> (カタカナ)<br />
-      <%= f.text_field :first_name_kana, autofocus: true, class: "first_name_kana" %>
+  <div class="field">
+    <div class = "row">
+      <div class = "col-md-3 offset-md-3 text-light">
+        <span>名前(カナ)</span>
+      </div>
+      <div class = "col-md-3">
+        <%= f.text_field :first_name_kana, class: "form-control", autofocus: true, placeholder:"タロウ", autocomplete: "first_name_kana" %><br />
+      </div>
     </div>
+  </div>
 
-    <div class="field">
-      <%= f.label :post_code %> (7文字以上)<br />
-      <%= f.number_field :post_code, autofocus: true, class: "post_code" %>
+  <div class="field">
+    <div class = "row">
+      <div class = "col-md-3 offset-md-3 text-light">
+        <span>郵便番号(7文字以上)</span>
+      </div>
+      <div class = "col-md-3">
+        <%= f.number_field :post_code, class: "form-control", autofocus: true, placeholder:"123-4567", autocomplete: "post_code" %><br />
+      </div>
     </div>
+  </div>
 
-    <div class="field">
-      <%= f.label :address %><br />
-      <%= f.text_field :address, autofocus: true, class: "adress" %>
+  <div class="field">
+    <div class = "row">
+      <div class = "col-md-3 offset-md-3 text-light">
+        <span>住所</span>
+      </div>
+      <div class = "col-md-3">
+        <%= f.text_field :address, class: "form-control", autofocus: true, placeholder:"東京都OOO", autocomplete: "address" %><br />
+      </div>
     </div>
+  </div>
 
-    <div class="field">
-      <%= f.label :telephone %> (10文字以上)<br />
-      <%= f.number_field :telephone, autofocus: true, class: "telephone" %>
+  <div class="field">
+    <div class = "row">
+      <div class = "col-md-3 offset-md-3 text-light">
+        <span>電話番号(10文字以上)</span>
+      </div>
+      <div class = "col-md-3">
+        <%= f.number_field :telephone, class: "form-control", autofocus: true, placeholder:"00012345678", autocomplete: "telephone" %><br />
+      </div>
     </div>
+  </div>
 
-    <div class="field">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  <div class="field">
+    <div class = "row">
+      <div class = "col-md-3 offset-md-3 text-light">
+        <span>メールアドレス</span>
+      </div>
+      <div class = "col-md-3">
+        <%= f.email_field :email, class: "form-control", autofocus: true, placeholder:"test@test.com", autocomplete: "email" %><br />
+      </div>
     </div>
+  </div>
 
-    <div class="field">
-      <%= f.label :password %>
-      <% if @minimum_password_length %>
-        <em>(<%= @minimum_password_length %> characters minimum)</em>
-      <% end %><br />
-      <%= f.password_field :password, autocomplete: "new-password" %>
+  <div class="field">
+    <div class = "row">
+      <div class = "col-md-3 offset-md-3 text-light">
+        <span>パスワード(英数字6桁以上)</span>
+      </div>
+      <div class = "col-md-3">
+        <% if @minimum_password_length %>
+        <% end %>
+        <%= f.password_field :password, class: "form-control", autofocus: true, placeholder:"英数字6桁以上", autocomplete: "new-password" %><br />
+      </div>
     </div>
+  </div>
 
-    <div class="field">
-      <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  <div class="field">
+    <div class = "row">
+      <div class = "col-md-3 offset-md-3 text-light">
+        <span>パスワード確認</span>
+      </div>
+      <div class = "col-md-3">
+        <%= f.password_field :password, class: "form-control", autofocus: true, placeholder:"英数字6桁以上", autocomplete: "new-password" %><br />
+      </div>
     </div>
+  </div>
 
-    <div class="actions" style="padding-left: 400px; padding-top: 10px">
-      <%= f.submit "登録" %>
+  <div class="field">
+    <div class = "row">
+      <div class = "col-md-3 offset-md-3 text-light">
+        <div class="actions" style="padding-left: 400px; padding-top: 10px">
+          <%= f.submit "登録" %>
+        </div>
+      </div>
     </div>
-  <% end %>
-</div>
+  </div>
+<% end %>

@@ -19,3 +19,55 @@
 
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
+
+header{
+	position: fixed;
+	width: 100%;
+	margin-bottom: 20px;
+}
+
+.navbar-inverse {
+	background-image: image-url('header.jpg');
+	background-position: bottom;
+}
+
+/*ブランドロゴのデザイン*/
+.navbar-brand {
+	font-family: 'Sacramento', cursive;
+	font-size: 250%;
+	padding-top: 30px;
+	padding-right: 200px;
+	font-weight: nomal;
+	border-bottom-color: #fff;
+}
+
+.nav-list-item {
+	possition: top;
+	font-color: #fff;
+	padding-right: 40px;
+	font-weight: 600;
+}
+
+.no-underline {
+	text-decoration:none !important;
+}
+
+.title {
+	color: #fff;
+}
+
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+footer{
+	 min-height: 50px;
+	/* footerの最小値 */
+	 width:100%;
+	 position: fixed;
+	 bottom: 0;
+	 margin-bottom: 0;
+	 background-color: #000;
+}

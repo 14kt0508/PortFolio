@@ -1,7 +1,19 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="container">
     <nav class='nav navbar-nav navbar-left' >
-      <span>れんらくChild</span>
+      <% if admin_signed_in? %>
+        <div class="navbar-brand">
+          <%= link_to admins_calendars_path do %>
+            <div class="title">れんらくChild</div>
+          <% end %>
+        </div>
+      <% else %>
+        <div class="navbar-brand">
+          <%= link_to root_path do %>
+            <div class="title">れんらくChild</div>
+          <% end %>
+        </div>
+      <% end %>
     </nav>
 
     <nav>

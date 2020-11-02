@@ -1,25 +1,54 @@
-<h2>Log in</h2>
+<div class = "row">
+  <div class = "col-md-3 offset-md-3">
+    <h3 style="margin-top: 50px;">ログイン</h3><br />
+  </div>
+</div>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
 
   <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+    <div class = "row">
+      <div class = "col-md-3 offset-md-3 text-light">
+        <span>メールアドレス</span>
+      </div>
+      <div class = "col-md-3">
+        <%= f.email_field :email, class: "form-control", autofocus: true,  autocomplete: "email" %><br />
+      </div>
     </div>
-  <% end %>
+  </div>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
+  <div class="field">
+    <div class = "row">
+      <div class = "col-md-3 offset-md-3 text-light">
+        <span>パスワード</span>
+      </div>
+      <div class = "col-md-3">
+        <%= f.password_field :password, class: "form-control", autocomplete: "current-password" %><br />
+      </div>
+    </div>
+  </div>
+
+  <div class="field">
+    <div class = "row">
+      <div class = "col-md-3 offset-md-3 text-light">
+        <% if devise_mapping.rememberable? %>
+          <div class="field">
+            <%= f.check_box :remember_me %>
+            <%= f.label :remember_me %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="field">
+    <div class = "row">
+      <div class = "col-md-3 offset-md-3 text-light">
+        <div class="actions" style="padding-left: 400px; padding-top: 10px">
+          <%= f.submit "ログイン" %>
+        </div>
+      </div>
+    </div>
   </div>
 <% end %>
 

@@ -1,6 +1,6 @@
 <h2>送迎者情報登録</h2>
   <p id="notice"><%= notice %></p>
-	<%= form_with url: pick_up_persons_path, method: :post ,local:true do |f| %>
+	<%= form_with model: @pick_up_person, url: pick_up_persons_path, method: :post ,local:true do |f| %>
 	<%#= render 'layouts/error', model: f.object %>
 	  <table class='table'>
     <tr>

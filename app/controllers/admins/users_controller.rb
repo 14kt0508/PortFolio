@@ -8,7 +8,7 @@ class Admins::UsersController < ApplicationController
 	def show
 		@user = User.find(params[:id])
 		@children = Child.all
-		@pick_up_person = PicUpPerson.all
+		@pick_up_person = PickUpPerson.all
 	end
 
 

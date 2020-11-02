@@ -1,6 +1,6 @@
 <h2>お子さん情報登録</h2>
   <p id="notice"><%= notice %></p>
-	<%= form_with url: children_path, method: :post ,local:true do |f| %>
+	<%= form_with model: @children, url: children_path, method: :post ,local:true do |f| %>
 	<%#= render 'layouts/error', model: f.object %>
 	  <table class='table'>
     <tr>
@@ -57,7 +57,7 @@
       <th>クラス</th>
       <td>
         <div class="field blank">
-          <%= f.text_field :class_name,:size=>"20" %>
+          <%= f.select :class_name_id, options_for_select(ClassName.all.map{|i| [i[:name], i[:id]] }), include_blank: "選択して下さい" %>
         </div>
       </td>
     </tr>
@@ -75,7 +75,10 @@
       <th>お迎え時間</th>
       <td>
         <div class="field blank">
-          <%= f.text_area :pick_up_time, class: "pick_up_time" %>
+          <%= f.time_select(
+            :pick_up_time,
+            use_month_numbers: true,
+            default: Date.new) %>
         </div>
       </td>
     </tr>
