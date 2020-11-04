@@ -7,7 +7,7 @@ class Users::PickUpPersonsController < ApplicationController
 	def create
 		@pick_up_person = PickUpPerson.new(pick_up_person_params)
 		@pick_up_person.user_id = current_user.id
-		if @pick_up_person.save
+		if @pick_up_person.save(pick_up_person_params)
 	      flash[:success] = "登録に成功しました"
 	      redirect_to user_path(current_user)
 	    else

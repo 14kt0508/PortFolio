@@ -1,35 +1,44 @@
-<h1>イベント詳細</h1>
+<div class="event_background">
+  <div class="container-fluid">
+    <div class="center-block">
+        <h2 class="marker_event_title">イベント情報</h2>
+    </div>
 
-    <table class='table'>
+    <div class='row'>
+      <div class='col-6 offset-3 center-contents'>
+        <div class="table-responsive">
+          <table class='table table-hover'>
+            <tr>
+              <th class="marker">イベント名</th>
+              <th><%= @event.title %></th>
+            </tr>
 
-      <tr>
-        <th>イベント名</th>
-        <th><%= @event.title %></th>
-      </tr>
+            <tr>
+              <th class="marker">開始時間</th>
+              <th><%= @event.start.strftime("%Y年%m月%d日 %H時%M分") %>
+              </th>
+            </tr>
 
-      <tr>
-        <th>開始時間</th>
-        <th><%= @event.start.strftime("%Y年%m月%d日 %H時%M分") %>
-        </th>
-      </tr>
-
-      <tr>
-        <th>終了時間</th>
-        <th><%= @event.end.strftime("%Y年%m月%d日 %H時%M分") %>
-        </th>
-      </tr>
+            <tr>
+              <th class="marker">終了時間</th>
+              <th><%= @event.end.strftime("%Y年%m月%d日 %H時%M分") %>
+              </th>
+            </tr>
 
 
-      <tr>
-        <th>対象クラス</th>
-        <th><%#= @class_name.name %></th>
-      </tr>
+            <tr>
+              <th class="marker">対象クラス</th>
+              <th><%#= @class_name.name %></th>
+            </tr>
 
-      <tr>
-        <th>イベント内容</th>
-        <th><%= @event.body %></th>
-      </tr>
-    </table>
-    <%= link_to "編集", edit_admins_event_path(@event.id), class: "btn btn-primary btn-new-register btn-xs"; %>
+            <tr>
+              <th class="marker">イベント内容</th>
+              <th><%= @event.body %></th>
+            </tr>
+          </table>
+          <%= link_to "戻る", calendars_path, class: "btn btn-success btn-xs"; %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

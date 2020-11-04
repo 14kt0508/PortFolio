@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
 	has_many :children
-	has_many :pick_up_parson
+	has_many :pick_up_persons
 
 	validates :first_name, presence: true, format: { with:/\A[ぁ-んァ-ン一-龥]/}
 	validates :first_name_kana, presence: true, format: { with:/\A[ァ-ヶー－]+\z/}

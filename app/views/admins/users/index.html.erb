@@ -1,40 +1,44 @@
-<div class="container">
-	<div class="row">
-		<h2>会員一覧</h2>
-		<table class="table">
-			<thead>
-				<tr>
-					<th>氏名</th>
-					<th>住所</th>
-					<th>緊急連絡先</th>
-					<th>メールアドレス</th>
-				</tr>
-			</thead>
-
-			<tbody>
-				<% @users.each do |user| %>
+<div class="container-fluid">
+    <div class="center-block">
+      <h2>会員一覧</h2>
+    </div>
+    <div class='col-10 offset-1 center-contents'>
+	    <div class="table-responsive">
+	        <table class='table table-hover'>
+				<thead class="thead-light">
 					<tr>
-						<td>
-							<%= link_to admins_user_path(user.id) do %>
-								<%= user.family_name %><%= user.first_name %>
-	            			<% end %>
-						</td>
-
-						<td>
-							<%= user.post_code %><%= user.address %>
-						</td>
-
-						<td>
-							<%= user.telephone %>
-						</td>
-
-						<td>
-							<%= user.email %>
-						</td>
+						<th>氏名</th>
+						<th>住所</th>
+						<th>緊急連絡先</th>
+						<th>メールアドレス</th>
 					</tr>
-				<% end %>
-				<%= paginate @users %>
-			</tbody>
-		</table>
+				</thead>
+
+				<tbody>
+					<% @users.each do |user| %>
+						<tr>
+							<td>
+								<%= link_to admins_user_path(user.id) do %>
+									<%= user.family_name %><%= user.first_name %>
+		            			<% end %>
+							</td>
+
+							<td>
+								<%= user.post_code %><%= user.address %>
+							</td>
+
+							<td>
+								<%= user.telephone %>
+							</td>
+
+							<td>
+								<%= user.email %>
+							</td>
+						</tr>
+					<% end %>
+					<%= paginate @users %>
+				</tbody>
+			</table>
+		</div>
 	</div>
 </div>

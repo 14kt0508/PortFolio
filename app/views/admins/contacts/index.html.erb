@@ -1,17 +1,35 @@
-<div class="container">
-  	<h1>連絡一覧</h1>
+<div class="container-fluid">
+    <div class="center-block">
+      <h2>連絡一覧</h2>
+    </div>
+    <p id="notice"><%= notice %></p>
+    <div class='col-10 offset-1 center-contents'>
+	    <div class="table-responsive">
+	        <table class='table table-hover'>
+				<thead class="thead-light">
+					<tr>
+						<th>件名</th>
+						<th>内容</th>
+					</tr>
+				</thead>
 
-	<p id="notice"><%= notice %></p>
-	<div class="new-btn-wrap">
-	    <%= link_to "連絡新規作成", new_admins_contact_path, class: "btn btn-primary col-xs-12"; %>
+				<tbody>
+					<% @contacts.each do |contact| %>
+						<tr>
+							<td>
+								<%= link_to admins_contact_path(contact.id) do %>
+								<%= contact.title %>
+								<% end %>
+							</td>
+
+							<td>
+								<%= contact.body %>
+							</td>
+						</tr>
+					<% end %>
+					<%= paginate @contacts %>
+				</tbody>
+			</table>
+		</div>
 	</div>
-
-	<table class="table">
-		<thead>
-      		<tr>
-	    		<th>日付</th>
-	    		<th>件名</th>
-	    	</tr>
-	    </thead>
-	</table>
 </div>

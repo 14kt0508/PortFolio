@@ -3,18 +3,18 @@ class Admins::AdminsController < ApplicationController
 	before_action :authenticate_admin!
 
 	def show
-		@admin_user = Admin.find(params[:id])
+		@admin = Admin.find(params[:id])
 		@children = Child.all
-		@pick_up_person = PicUpPerson.all
+		@pick_up_person = PickUpPerson.all
 	end
 
 	def edit
-		@admin_user = Admin.find(params[:id])
+		@admin = Admin.find(params[:id])
 	end
 
 	def update
-		@admin_user = Admin.find(params[:id])
-		if @admin_user.update(admin_user_params)
+		@admin = Admin.find(params[:id])
+		if @admin.update(admin_user_params)
       		flash[:success] = "更新に成功しました"
       		redirect_to admins_admin_path(@admin_user)
     	else
@@ -24,13 +24,13 @@ class Admins::AdminsController < ApplicationController
 	end
 
 	def destroy
-		@admin_user = Admin.find(params[:id])
-    	@admin_user.destroy
+		@admin = Admin.find(params[:id])
+    	@admin.destroy
 	end
 
 	private
 
-	def admin_user_params
+	def admin_params
 		params.require(:admin).permit(:facility_id, :family_name, :family_name_kana, :first_name, :first_name_kana, :email)
 	end
 

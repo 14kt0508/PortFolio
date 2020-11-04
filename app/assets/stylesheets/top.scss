@@ -5,22 +5,27 @@
 .top_background {
 	background-image: image-url('top_background.jpg');
 	background-size: cover;
-	background-position: center;
-	height: 100%;
+	background-position: center center;
+	height: auto;
 	margin: 0;
 }
 
 .title_name{
 	text-align: center;
 	margin: 300px 0 300px 0;
-	}
+	position: center;
+  	color: white;/*文字は白に*/
+  	background: linear-gradient(transparent 0%, #B384FF 100%);
+}
 
 .center-block{
 	color: #fff;
 	text-align: center;
 }
 
-.title_name{
-	position: center;
-  	color: white;/*文字は白に*/
+.btn-top{
+	margin-bottom: 50px;
 }
+
+
+

@@ -1,42 +1,35 @@
-<h1>イベント新規登録</h1>
+<div class="center-block">
+	<h1>イベント新規登録</h1>
+</div>
 
-<%= form_for(@event, url:admins_events_path) do |f| %>
+<div class="center-block">
 
-	<h4>イベント名</h4>
-	<%= f.text_field :title %>
+	<%= form_for(@event, url:admins_events_path) do |f| %>
 
-
-	<h4>開始時間</h4>
-		<%= f.datetime_select(
-		:start,
-		use_month_numbers: true,
-		start_year: 2000,
-		end_year: 2030,
-		default: Date.new(2020, 1, 1)) %>
-
-	<h4>終了時間</h4>
-		<%= f.datetime_select(
-		:end,
-		use_month_numbers: true,
-		start_year: 2000,
-		end_year: 2030,
-		default: Date.new(2020, 1, 1)) %>
+		<h4 style="margin-top:10px">イベント名</h4>
+		<%= f.text_field :title %>
 
 
+		<h4 style="margin-top:10px">開始時間</h4>
+		<%= f.datetime_field  :start, placeholder: "XXXX-XX-XX", class:"field" %>
+
+		<h4 style="margin-top:10px">終了時間</h4>
+		<%= f.datetime_field  :end, placeholder: "XXXX-XX-XX", class:"field" %>
 
 
-<!-- 	<h4>対象クラス</h4>
-	<%# @class_names.each do |name| %>
-		<div>
-            <%#= check_box :class, :name,{ multiple: true }, name.id, nil %>
-        	<span><%#= name.name %></span>
-        </div>
-    <%# end %> -->
+	 	<h4 style="margin-top:10px">対象クラス</h4>
+		<% @class_names.each do |name| %>
+			<div>
+	            <%= check_box :class, :name,{ multiple: true }, name.id, nil %>
+	        	<span><%= name.name %></span>
+	        </div>
+	    <% end %>
 
-	<h4>イベント内容</h4>
-	<%= f.text_area :body %>
+		<h4 style="margin-top:10px">イベント内容</h4>
+		<%= f.text_area :body, size: "40x5"  %>
 
-	<div class="actions">
-		<%= f.submit '投稿' %>
-	</div>
-<% end %>
+		<div class="actions" style="margin-top:10px">
+			<%= f.submit '投稿', class: "btn btn-primary" %>
+		</div>
+	<% end %>
+</div>

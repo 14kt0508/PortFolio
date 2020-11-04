@@ -23,7 +23,6 @@
 header{
 	position: fixed;
 	width: 100%;
-	margin-bottom: 20px;
 }
 
 .navbar-inverse {
@@ -37,16 +36,22 @@ header{
 	font-size: 250%;
 	padding-top: 30px;
 	padding-right: 200px;
-	font-weight: nomal;
 	border-bottom-color: #fff;
 }
 
 .nav-list-item {
-	possition: top;
-	font-color: #fff;
 	padding-right: 40px;
 	font-weight: 600;
 }
+
+.nav-list-item a {
+	color: #fff;
+}
+
+.my_page{
+	background: linear-gradient(transparent 0%, #fec1fe 200%);
+}
+
 
 .no-underline {
 	text-decoration:none !important;
@@ -56,18 +61,23 @@ header{
 	color: #fff;
 }
 
+.btn{
+	background-color:#fff;
+	color:#28a745;
+	border-color: #28a745;
+}
 
-html {
-  position: relative;
-  min-height: 100%;
+body{
+/* footerの高さの最大値 */
+ 	padding-bottom: 0;
 }
 
 footer{
-	 min-height: 50px;
-	/* footerの最小値 */
+	 min-height: 20px;
 	 width:100%;
 	 position: fixed;
 	 bottom: 0;
 	 margin-bottom: 0;
 	 background-color: #000;
+	 z-index: 20;
 }

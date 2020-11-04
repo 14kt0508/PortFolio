@@ -1,16 +1,24 @@
-<%= form_for @contact do |f| %>
+<div class="container-fluid">
+  <div class="center-block">
+    <h2>連絡確認</h2>
+  </div>
+
+<%= form_for @contact, url: admins_contacts_path do |f| %>
+<div class="center-block">
+
   <div class="field">
     title: <%= @contact.title %>
-    <%= f.hidden_field :title   # <=データ保持 %>
+    <%= f.hidden_field :title %>
   </div>
   <div class="field">
-    content: <%= @contact.content %>
-    <%= f.hidden_field :content # <=データ保持 %>
+    content: <%= @contact.body %>
+    <%= f.hidden_field :body %>
   </div>
   <div class="actions">
-    <%= f.submit 'Back!', name: 'back'  # <=戻る為のname %>
+    <%= link_to '戻る', new_admins_contact_path %>
   </div>
   <div class="actions">
     <%= f.submit '送信' %>
   </div>
 <% end %>
+</div>

@@ -1,8 +1,11 @@
-<h2>登録情報編集</h2>
+<div class="center-block">
+  <h2>登録情報編集</h2>
+</div>
 
-<%= form_for(@admin_user, url: admins_admin_path(@admin_user)) do |f| %>
+<%= form_for(@admin, url: admins_admin_path(@admin)) do |f| %>
   <%= render 'layouts/errors', model: f.object %>
 
+<div class='col-6 offset-3 center-contents'>
     <table class='table'>
 
 	    <th>施設名</th>
@@ -50,8 +53,10 @@
 	        </div>
 	    </td>
     </table>
-
+<div class="center-block">
   <div class="actions">
     <%= f.submit "更新"%>
+</div>
   </div>
+</div>
 <% end %>

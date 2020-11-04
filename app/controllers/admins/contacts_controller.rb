@@ -12,18 +12,24 @@ class Admins::ContactsController < ApplicationController
 
 	def confirm
 		@contact = Contact.new(contact_params)
+        @contact.admin_id = current_admin.id
 		render :new if @contact.invalid?
 	end
 
 	def create
 		@contact = Contact.new(contact_params)
+        @contact.admin_id = current_admin.id
 		if @contact.save
-      		flash[:success] = "商品登録に成功しました"
-      		redirect_to admin_contacts_path(@item)
+      		flash[:success] = "送信に成功しました"
+      		redirect_to admins_contacts_path
     	else
-      		flash.now[:danger]="商品登録に失敗しました"
+      		flash.now[:danger]="送信に失敗しました"
 	      	render 'new'
     	end
+    end
+
+    def show
+        @contact = Contact.find(params[:id])
     end
 
     # def create
@@ -48,5 +54,11 @@ class Admins::ContactsController < ApplicationController
     # 		@contact.save
     # 	end
     # end
+
+    private
+
+    def contact_params
+        params.require(:contact).permit(:title, :body, :image)
+    end
 
 end

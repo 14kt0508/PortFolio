@@ -1,5 +1,6 @@
-<h2>登録情報編集</h2>
-
+<div class="center-block">
+	<h2>登録情報編集</h2>
+</div>
 <%= form_for(@children, url: child_path(@children)) do |f| %>
   <%= render 'layouts/errors', model: f.object %>
 
@@ -59,7 +60,7 @@
 	      <th>クラス</th>
 	      <td>
 	        <div class="field blank">
-	          <%= f.select :class_name_id, options_for_select(ClassName.all.map{|i| [i[:class_name], i[:id]] }), include_blank: "選択して下さい" %>
+	          <%= f.select :class_name_id, options_for_select(ClassName.all.map{|i| [i[:name], i[:id]] }), include_blank: "選択して下さい" %>
 	        </div>
 	      </td>
 	    </tr>
@@ -77,7 +78,10 @@
 	      <th>お迎え時間</th>
 	      <td>
 	        <div class="field blank">
-	          <%= f.text_area :pick_up_time, class: "pick_up_time" %>
+	        	<%= f.time_select(
+		            :pick_up_time,
+		            use_month_numbers: true,
+		            default: Date.new) %>
 	        </div>
 	      </td>
 	    </tr>

@@ -1,8 +1,10 @@
-<h2>お子さん情報登録</h2>
-  <p id="notice"><%= notice %></p>
-	<%= form_with model: @children, url: children_path, method: :post ,local:true do |f| %>
+<div class="center-block">
+  <h2>お子さん情報登録</h2>
+</div>
+<p id="notice"><%= notice %></p>
+<%= form_with model: @children, url: children_path, method: :post ,local:true do |f| %>
 	<%#= render 'layouts/error', model: f.object %>
-	  <table class='table'>
+	<table class='table'>
     <tr>
       <th>名前</th>
       <td>

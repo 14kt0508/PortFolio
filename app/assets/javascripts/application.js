@@ -30,16 +30,6 @@ $(document).on('turbolinks:load', function () {
             //return $('#calendar').fullCalendar({});
             return $('#calendar').fullCalendar({
                 events: '/events.json',
-                // events: [
-                //     {
-                //         "id":"1",
-                //         "title":"タイトル",
-                //         "description":"説明",
-                //         "start": new Date('2020-10-25'),
-                //         "end":new Date('2020-10-25'),
-                //         "url":"some_address"
-                //     }
-                // ],
                 //カレンダー上部を年月で表示させる
                 titleFormat: 'YYYY年 M月',
                 //曜日を日本語表示
@@ -67,7 +57,7 @@ $(document).on('turbolinks:load', function () {
                 //イベントの時間表示を２４時間に
                 timeFormat: "HH:mm",
                 //イベントの色を変える
-                eventColor: '#87cefa',
+                eventColor: '#CCFF66',
                 //イベントの文字色を変える
                 eventTextColor: '#000000',
                 eventRender: function(event, element) {
@@ -76,8 +66,12 @@ $(document).on('turbolinks:load', function () {
                 },
                 eventClick: function(event, jsEvent, view) {
                 //クリックしたイベントのタイトルが取れるよ
-                //本番はURl変更必要
-                location.href=`http://localhost:3000/admins/events/${event.id}`;
+                if ( location.href.match(/admins/)) {
+                    location.href=`/admins/events/${event.id}`;
+                }
+                else{
+                    location.href=`/events/${event.id}`;
+                }
               }
             });
         }

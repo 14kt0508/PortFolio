@@ -1,9 +1,8 @@
-<div class= "contact_background">
-  <div class="center-block">
-    <h1>連絡詳細</h1>
-  </div>
+<div class="center-block">
+  <h1>連絡詳細</h1>
+</div>
 
-  <div class="center-block">
+<div class="center-block">
     <table class='table'>
 
       <tr>
@@ -13,7 +12,7 @@
 
       <tr>
         <th>対象クラス</th>
-        <th><%#= @class_name.name %></th>
+        <th><%= @#class_name.name %></th>
       </tr>
 
       <tr>
@@ -23,6 +22,6 @@
       </tr>
 
     </table>
-    <%= link_to "戻る", contacts_path, class: "btn btn-primary btn-xs"; %>
+    <%= link_to "戻る", admins_contacts_path, class: "btn btn-primary btn-xs"; %>
   </div>
 </div>

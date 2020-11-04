@@ -7,7 +7,7 @@ class Admins::EventsController < ApplicationController
 
 	def new
 		@event = Event.new
-		# @class_names = ClassName.all
+		@class_names = ClassName.all
 	end
 
 	def create
