@@ -37,7 +37,7 @@ class Users::ChildrenController < ApplicationController
 		@children = Child.find(params[:id])
 		@children = destroy
 		flash[:success] = "情報が削除されました"
-  		redirect_to users_path
+  		redirect_to user_path
 	end
 
 	private

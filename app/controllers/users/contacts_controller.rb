@@ -5,7 +5,12 @@ class Users::ContactsController < ApplicationController
 	end
 
 	def show
-		@contact = Contact.find(params[:id])
+        @contact = Contact.find(params[:id])
+        contact_tos = @contact.contact_tos
+        @class_names = []
+        contact_tos.each do |contact_to|
+            @class_names.push(contact_to.class_name)
+        end
 	end
 
 	private

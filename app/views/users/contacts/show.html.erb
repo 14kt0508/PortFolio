@@ -1,28 +1,49 @@
 <div class= "contact_background">
-  <div class="center-block">
-    <h1>連絡詳細</h1>
+  <div class="center-block"  style="margin-bottom: 50px;">
+  <h2><span class="marker_blue" style="margin: 20px">連絡詳細</span></h2>
   </div>
 
   <div class="center-block">
-    <table class='table'>
+    <div class='row'>
+      <div class='col-6 offset-3 center-contents'>
+        <div class="table-responsive">
+          <table class='table table-hover'>
 
-      <tr>
-        <th>件名</th>
-        <th><%= @contact.title %></th>
-      </tr>
+            <tr class="table-light">
+              <th class="marker_contact">日付</th>
+              <th class="contact_style"><%= @contact.created_at.strftime('%Y/%m/%d') %></th>
+            </tr>
 
-      <tr>
-        <th>対象クラス</th>
-        <th><%#= @class_name.name %></th>
-      </tr>
+            <tr class="table-light">
+              <th class="marker_contact">対象クラス</th>
+              <th class="contact_style">
+                <% @class_names.each_with_index do |class_name,i| %>
+                  <%= i==0? '':',' %>
+                    <%= class_name.name %>
+                <% end %>
+              </th>
+            </tr>
 
-      <tr>
-        <th>内容</th>
-        <th><%= @contact.body %>
-        </th>
-      </tr>
+            <tr class="table-light">
+              <th class="marker_contact">件名</th>
+              <th class="contact_style"><%= @contact.title %></th>
+            </tr>
 
-    </table>
-    <%= link_to "戻る", contacts_path, class: "btn btn-primary btn-xs"; %>
+            <tr class="table-light">
+              <th class="marker_contact">内容</th>
+              <th class="contact_style"><%= @contact.body %>
+              </th>
+            </tr>
+
+            <tr class="table-light">
+              <th class="marker_contact">image</th>
+              <th class="contact_style"><%= attachment_image_tag @contact,:image, style: "width:100%;" %>
+              </th>
+            </tr>
+          </table>
+          <%= link_to "戻る", contacts_path, class: "btn btn-primary btn-xs"; %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

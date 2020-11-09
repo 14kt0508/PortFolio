@@ -1,3 +1,30 @@
 // Place all the styles related to the Admins/contacts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.center-block-contact{
+	text-align: center;
+	color: #000;
+}
+
+.contact_title{
+	color: #000;
+	margin: 30px;
+}
+
+.contact_style{
+	color: #000;
+	margin: 10px 0 20px 0;
+}
+
+.marker_contact{
+	color: #000;
+	background: linear-gradient(transparent 0%, #EEEEEE 0%);
+}
+
+.btn-contact{
+	background-color:#fff;
+	color:#28a745;
+	border-color: #28a745;
+	margin-bottom: 30px;
+}

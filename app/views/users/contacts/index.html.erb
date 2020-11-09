@@ -1,29 +1,28 @@
 <div class="contact_background">
 	<div class="container-fluid">
 	    <div class="center-block">
-	      <h2 class="marker_blue" style="margin: 20px">連絡一覧</h2>
+	      <h2><span class="marker_blue" style="margin: 20px">連絡一覧</span></h2>
 	    </div>
 	    <div class='col-10 offset-1 center-contents'>
 		    <div class="table-responsive">
 		        <table class='table table-hover'>
 					<thead class="thead-light">
 						<tr>
+							<th>日付</th>
 							<th>件名</th>
-							<th>内容</th>
 						</tr>
 					</thead>
 
 					<tbody>
 						<% @contacts.each do |contact| %>
-							<tr>
+							<tr class="table-light">
+								<td>
+									<%= contact.created_at.strftime('%Y/%m/%d') %>
+								</td>
 								<td>
 									<%= link_to contact_path(contact.id) do %>
 									<%= contact.title %>
 									<% end %>
-								</td>
-
-								<td>
-									<%= contact.body %>
 								</td>
 							</tr>
 						<% end %>

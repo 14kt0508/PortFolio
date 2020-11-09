@@ -37,7 +37,7 @@ class Users::PickUpPersonsController < ApplicationController
 		@pick_up_person = PickUpPerson.find(params[:id])
 		@pick_up_person.destroy
 		flash[:success] = "情報が削除されました"
-  		redirect_to users_path
+  		redirect_to user_path
 	end
 
 	private

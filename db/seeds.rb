@@ -107,10 +107,14 @@ Child.create!(
 	remarks: '特になし'
 )
 
-
 Event.create(
 	title: "test",
 	body:"test",
 	start: Time.new(2020, 11, 30, 9, 0, 0, 0),
 	end:Time.new(2020, 11, 30, 11, 0, 0, 0)
+)
+
+Contact.create(
+	title: "test",
+	body: "test"
 )
