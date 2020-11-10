@@ -96,3 +96,11 @@ group :production do
 end
 
 gem 'rails-i18n'
+
+gem 'capistrano'
+
+gem 'capistrano-rails'
+
+gem 'capistrano3-puma'
+
+gem 'capistrano-rbenv'
