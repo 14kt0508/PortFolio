@@ -9,7 +9,7 @@ class Child < ApplicationRecord
 	validates :family_name_kana, presence: true, format: { with:/\A[ァ-ヶー－]+\z/}
 	validates :birth_date, presence: true
 	validates :pick_up_person, presence: true
-  	validates :pick_up_peson, presence: true
+  	validates :pick_up_time, presence: true
   	validates :allergies, presence: true
   	validates :remarks, presence: true
 

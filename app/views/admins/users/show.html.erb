@@ -1,0 +1,111 @@
+<div class="container-fluid" style="margin-bottom: 100px;">
+  <div class="center-block">
+    <h2 class="text-secondary" style="margin-top:30px">会員情報</h2>
+  </div>
+  <div class='row'>
+    <div class='col-6 offset-3 center-contents'>
+      <div class="table-responsive">
+        <table class='table table-hover'>
+          <tr>
+            <th>氏名</th>
+            <th><%= @user.family_name %><%= @user.first_name %>
+                (<%= @user.family_name_kana %><%= @user.first_name_kana %>)
+            </th>
+          </tr>
+          <tr>
+            <th>住所</th>
+            <th>〒<%= @user.post_code %><%= @user.address %></th>
+          </tr>
+          <tr>
+            <th>緊急連絡先</th>
+            <th><%= @user.telephone %></th>
+          </tr>
+          <tr>
+            <th>メールアドレス</th>
+            <th><%= @user.email %></th>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="center-block">
+    <h2 class="text-muted" style="margin-top:10px">送迎者情報</h2>
+  </div>
+  <div class='row'>
+    <div class='col-6 offset-3 center-contents'>
+      <div class="table-responsive">
+        <table class='table table-hover'>
+          <% @pick_up_persons.each do |pick_up_person| %>
+            <tr>
+              <th>氏名</th>
+              <th><%= pick_up_person.family_name %><%= pick_up_person.first_name %>
+                  (<%= pick_up_person.family_name_kana %><%= pick_up_person.first_name_kana %>)
+              </th>
+            </tr>
+            <tr>
+              <th>住所</th>
+              <th><%= pick_up_person.post_code %><%= pick_up_person.address %></th>
+            </tr>
+            <tr>
+              <th>生年月日</th>
+              <th><%= pick_up_person.birth_date.strftime("%Y年%m月%d日") %></th>
+            </tr>
+            <tr>
+              <th>緊急連絡先</th>
+              <th><%= pick_up_person.telephone %></th>
+            </tr>
+            <tr>
+              <th>関係性</th>
+              <th><%= pick_up_person.relationship %></th>
+            </tr>
+          <% end %>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="center-block">
+    <h2 class="text-secondary" style="margin-top:10px">お子さんの情報</h2>
+  </div>
+    <div class='row'>
+      <div class='col-6 offset-3 center-contents'>
+        <div class="table-responsive">
+          <table class='table table-hover'>
+            <% if @children.present? %>
+              <% @children.each do |children| %>
+                <tr>
+                  <th>氏名</th>
+                  <th><%= children.family_name %><%= children.first_name %>
+                      (<%= children.family_name_kana %><%= children.first_name_kana %>)
+                  </th>
+                </tr>
+                <tr>
+                  <th>生年月日</th>
+                  <th><%= children.birth_date.strftime("%Y年%m月%d日") %></th>
+                </tr>
+                <tr>
+                  <th>クラス</th>
+                  <th><%= children.class_name.name %></th>
+                <tr>
+                  <th>送迎者</th>
+                  <th><%= children.pick_up_person %></th>
+                </tr>
+                <tr>
+                  <th>お迎え時間</th>
+                  <th><%= children.pick_up_time.strftime("%H時%M分") %></th>
+                </tr>
+                  <th>アレルギー</th>
+                  <th><%= children.allergies %></th>
+                </tr>
+                  <th>特記事項</th>
+                  <th><%= children.remarks %></th>
+                </tr>
+              <% end %>
+            <% end %>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

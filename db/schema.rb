@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_22_080005) do
+ActiveRecord::Schema.define(version: 2020_11_07_075644) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -18,7 +18,11 @@ ActiveRecord::Schema.define(version: 2020_10_22_080005) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "facility_name"
+    t.integer "facility_id"
+    t.string "family_name"
+    t.string "family_name_kana"
+    t.string "first_name"
+    t.string "first_name_kana"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
@@ -35,12 +39,13 @@ ActiveRecord::Schema.define(version: 2020_10_22_080005) do
   end
 
   create_table "children", force: :cascade do |t|
+    t.integer "user_id"
     t.string "family_name"
     t.string "family_name_kana"
     t.string "first_name"
     t.string "first_name_kana"
     t.date "birth_date"
-    t.string "class_name"
+    t.integer "class_name_id"
     t.string "pick_up_person"
     t.time "pick_up_time"
     t.string "allergies"
@@ -55,7 +60,20 @@ ActiveRecord::Schema.define(version: 2020_10_22_080005) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "contact_tos", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "class_name_id"
+    t.integer "contact_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "contacts", force: :cascade do |t|
+    t.integer "admin_id"
+    t.datetime "time"
+    t.string "title"
+    t.text "body"
+    t.string "image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -68,14 +86,24 @@ ActiveRecord::Schema.define(version: 2020_10_22_080005) do
   end
 
   create_table "events", force: :cascade do |t|
-    t.datetime "time"
+    t.date "time"
+    t.datetime "start"
+    t.datetime "end"
     t.string "title"
     t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "pic_up_people", force: :cascade do |t|
+  create_table "facilities", force: :cascade do |t|
+    t.string "facility_name"
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "pick_up_people", force: :cascade do |t|
+    t.integer "user_id"
     t.string "family_name"
     t.string "family_name_kana"
     t.string "first_name"

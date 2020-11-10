@@ -4,23 +4,15 @@
     <title>RenrakuChild</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <%= render 'layouts/header' %>
-
-    <div class='body'>
-      <div class='container'>
-
-        <p id="notice"><%= notice %></p>
-
-        <%= yield %>
-      </div>
-    </div>
-
+        <!-- <div class='container'> -->
+          <%= yield %>
+        <!-- </div> -->
     <%= render 'layouts/footer' %>
   </body>
 </html>

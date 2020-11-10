@@ -1,0 +1,105 @@
+<div class="user_background">
+  <div class="container-fluid">
+		<div class="center-block">
+			<h2><span class="marker_title">登録情報編集</span></h2>
+		</div>
+		<%= form_for(@children, url: child_path(@children)) do |f| %>
+		    <%= render 'layouts/errors', model: f.object %>
+		      <div class='col-6 offset-3 center-contents'>
+		        <div class="table-responsive">
+		          <table class='table table-hover'>
+				    <tr>
+				      <th class="marker">名前</th>
+				      <td>
+				        <div class="field">
+				        	<%= f.text_field :family_name, class: "form-control",  autocomplete: "family_name" %>
+				          </div>
+				      </td>
+				      <td>
+				        <div class="field">
+				        	<%= f.text_field :first_name, class: "form-control",  autocomplete: "first_name" %>
+				        </div>
+				      </td>
+				    </tr>
+
+				    <tr>
+				      <th class="marker">フリガナ</th>
+				      <td>
+				        <div class="field">
+				        	<%= f.text_field :family_name_kana, class: "form-control",  autocomplete: "family_name_kana" %>
+				        </div>
+				      </td>
+				      <td>
+				        <div class="field">
+				        	<%= f.text_field :first_name_kana, class: "form-control",  autocomplete: "first_name_kana" %>
+				        </div>
+				      </td>
+				    </tr>
+				    <tr>
+					    <th class="marker">生年月日</th>
+					    <td>
+					        <div class="birth_date_field">
+					            <%= f.date_select(
+					                :birth_date,
+					                use_month_numbers: true,
+					                start_year: 1930,
+					                end_year: (Time.now.year),
+					                default: Date.new(1989, 1, 1)) %>
+					        </div>
+			      		</td>
+			    	</tr>
+				    <tr>
+				      <th class="marker">クラス</th>
+				      <td>
+				        <div class="field blank">
+				          <%= f.select :class_name_id, options_for_select(ClassName.all.map{|i| [i[:name], i[:id]] }), include_blank: "選択して下さい" %>
+				        </div>
+				      </td>
+				    </tr>
+				    <tr>
+				      <th class="marker">お迎え者</th>
+				      <td>
+				        <div class="field blank" >
+				        	<%= f.text_field :pick_up_person, class: "form-control",  autocomplete: "pick_up_person" %>
+				        </div>
+				      </td>
+				    </tr>
+				    <tr>
+				      <th class="marker">お迎え時間</th>
+				      <td>
+				        <div class="field blank">
+				        	<%= f.time_select(
+					            :pick_up_time,
+					            use_month_numbers: true,
+					            default: Date.new) %>
+				        </div>
+				      </td>
+				    </tr>
+
+				    <tr>
+				      <th class="marker">アレルギー</th>
+				      <td>
+				        <div class="field blank">
+				        	<%= f.text_field :allergies, class: "form-control",  autocomplete: "allergies" %>
+				        </div>
+				      </td>
+				    </tr>
+
+				    <tr>
+				      <th class="marker">特記事項</th>
+				      <td>
+				        <div class="field blank">
+				        	<%= f.text_field :remarks, class: "form-control",  autocomplete: "remarks" %>
+				        </div>
+				      </td>
+				    </tr>
+			    </table>
+
+				<div class="actions">
+					<%= f.submit "更新", class: "btn btn-success btn-xs";%>
+				    <%= link_to "戻る", user_path, class: "btn btn-success btn-xs"; %>
+				</div>
+			</div>
+		<% end %>
+	</div>
+</div>

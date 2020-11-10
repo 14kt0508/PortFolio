@@ -1,43 +1,46 @@
-<div class="container">
-	<div class="row">
-		<h2>子ども一覧</h2>
-		<table class="table">
-			<thead>
-				<tr>
-					<th>クラス名</th>
-					<th>園児名</th>
-					<th>お迎え者</th>
-					<th>お迎え時間</th>
-				</tr>
-			</thead>
-
-			<tbody>
-				<% @children.each do |child| %>
+<div class="container-fluid">
+    <div class="center-block">
+      <h2 class="children_title">子ども一覧</h2>
+    </div>
+    <div class='col-10 offset-1 center-contents'>
+	    <div class="table-responsive">
+	        <table class='table table-hover'>
+				<thead class="thead-light">
 					<tr>
-						<td>
-							<% @class_name.each do |name| %>
-								<%= child.class_name.id %>
-							<% end %>
-						</td>
-
-						<td>
-							<%= link_to admin_user_path(user.id) do %>
-								<%= child.family_name %><%= child.first_name %>
-								<%= child.family_name_kana %><%= child.first_name_kana %>
-	            			<% end %>
-						</td>
-
-						<td>
-							<%= child.pick_up_person %>
-						</td>
-
-						<td>
-							<%= child.pick_up_time %>
-						</td>
+						<th>クラス名</th>
+						<th>園児名</th>
+						<th>生年月日</th>
+						<th>お迎え者</th>
+						<th>お迎え時間</th>
 					</tr>
-				<% end %>
-				<%= paginate @children %>
-			</tbody>
-		</table>
+				</thead>
+
+				<tbody>
+					<% @children.each do |children| %>
+						<tr>
+							<td>
+								<%= children.class_name.name %>
+							</td>
+							<td>
+								<%= link_to admins_user_path(children.user.id) do %>
+									<%= children.family_name %><%= children.first_name %>
+									(<%= children.family_name_kana %><%= children.first_name_kana %>)
+		            			<% end %>
+							</td>
+							<td>
+								<%= children.birth_date.strftime("%Y年%m月%d日") %>
+							</td>
+							<td>
+								<%= children.pick_up_person %>
+							</td>
+							<td>
+								<%= children.pick_up_time.strftime("%H時%M分") %>
+							</td>
+						</tr>
+					<% end %>
+					<%= paginate @children %>
+				</tbody>
+			</table>
+		</div>
 	</div>
 </div>

@@ -1,23 +1,41 @@
-<h1>イベント新規登録</h1>
+<div class="container-fluid" style="margin-bottom: 50px;">
 
-<%= form_for(@event, url:admins_events_path) do |f| %>
+	<div class="center-block">
+		<h1 class="evnt_style">イベント新規登録</h1>
+	</div>
 
-	<h4>日時</h4>
-	<%= f.text_field :time %>
+	<div class="center-block">
 
-	<h4>イベント名</h4>
-	<%= f.text_field :title %>
+		<%= form_for(@event, url:admins_events_path) do |f| %>
 
-	<h4>対象クラス</h4>
-	<% @class_names.each do |name| %>
-		<div>
-            <%= check_box :class, :name,{ multiple: true }, name.id, nil %>
-        	<span><%= name.name %></span>
-        </div>
-    <% end %>
+			<h4 class="evnt_style">イベント名</h4>
+			<%= f.text_field :title %>
 
-	<h4>イベント内容</h4>
-	<%= f.text_area :body %>
+		    <h4 class="evnt_style">対象クラス</h4>
+		    <div class="evnt_style">
+		    	<%= f.collection_check_boxes :event_class_names, @class_names, :id, :name %>
+			</div>
 
-	<%= f.submit '投稿' %>
-<% end %>
+			<h4 class="evnt_style">開始時間</h4>
+			<%= f.datetime_field  :start, placeholder: "XXXX-XX-XX", class:"field" %>
+
+			<h4 class="evnt_style">終了時間</h4>
+			<%= f.datetime_field  :end, placeholder: "XXXX-XX-XX", class:"field" %>
+
+		 	<!-- <h4 class="evnt_style">対象クラス</h4>
+			<%# @class_names.each do |name| %>
+				<div class="evnt_style">
+		            <%#= check_box :class, :name,{ multiple: true }, name.id, nil %>
+		        	<span><%#= name.name %></span>
+		        </div>
+		    <%# end %> -->
+
+			<h4 class="evnt_style">イベント内容</h4>
+			<%= f.text_area :body, size: "40x5"  %>
+
+			<div class="actions" style="margin-top:10px">
+				<%= f.submit '投稿', class: "btn btn-primary" %>
+			</div>
+		<% end %>
+	</div>
+</div>

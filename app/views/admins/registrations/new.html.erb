@@ -1,37 +1,114 @@
-<div style="margin: 100px;">
-
+<div class = "row">
+  <div class = "col-12">
+    <div class="center-block">
+      <h3 style="margin-top: 50px; color: #000;">新規登録</h3><br />
+    </div>
+  </div>
+</div>
   <%= form_for(resource, as: resource_name, url: admin_registration_path) do |f| %>
     <%= render "users/shared/error_messages", resource: resource %>
 
-    <h3>新規登録</h3>
-
     <div class="field">
-      <%= f.label :facility_name %><br />
-      <%= f.text_field :facility_name, autofocus: true, class: "family_name" %>
+      <div class = "row">
+        <div class = "col-md-3 offset-md-3 text-light">
+          <span style="color: #000;">施設名</span>
+        </div>
+        <div class = "col-md-3" style="margin-bottom: 20px;">
+          <%= f.select :facility_id, options_for_select(Facility.all.map{|i| [i[:facility_name], i[:id]] }), include_blank: "選択して下さい" %>
+          <br />
+        </div>
+      </div>
     </div>
 
     <div class="field">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      <div class = "row">
+        <div class = "col-md-3 offset-md-3 text-light">
+          <span style="color: #000;">苗字</span>
+        </div>
+        <div class = "col-md-3">
+          <%= f.text_field :family_name, class: "form-control", autofocus: true, placeholder:"田中", autocomplete: "family_name" %><br />
+        </div>
+      </div>
     </div>
 
     <div class="field">
-      <%= f.label :password %>
-      <% if @minimum_password_length %>
-        <em>(<%= @minimum_password_length %> characters minimum)</em>
-      <% end %><br />
-      <%= f.password_field :password, autocomplete: "new-password" %>
+      <div class = "row">
+        <div class = "col-md-3 offset-md-3 text-light">
+          <span style="color: #000;">名前</span>
+        </div>
+        <div class = "col-md-3">
+          <%= f.text_field :first_name, class: "form-control", autofocus: true, placeholder:"太郎", autocomplete: "first_name" %><br />
+        </div>
+      </div>
     </div>
 
     <div class="field">
-      <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+      <div class = "row">
+        <div class = "col-md-3 offset-md-3 text-light">
+          <span style="color: #000;">苗字(カナ)</span>
+        </div>
+        <div class = "col-md-3">
+          <%= f.text_field :family_name_kana, class: "form-control", autofocus: true, placeholder:"タナカ", autocomplete: "family_name_kana" %><br />
+        </div>
+      </div>
     </div>
 
-    <div class="actions" style="padding-left: 400px; padding-top: 10px">
-      <%= f.submit "登録" %>
+    <div class="field">
+      <div class = "row">
+        <div class = "col-md-3 offset-md-3 text-light">
+          <span style="color: #000;">名前(カナ)</span>
+        </div>
+        <div class = "col-md-3">
+          <%= f.text_field :first_name_kana, class: "form-control", autofocus: true, placeholder:"タロウ", autocomplete: "first_name_kana" %><br />
+        </div>
+      </div>
+    </div>
+
+    <div class="field">
+      <div class = "row">
+        <div class = "col-md-3 offset-md-3 text-light">
+          <span style="color: #000;">メールアドレス</span>
+        </div>
+        <div class = "col-md-3">
+          <%= f.email_field :email, class: "form-control", autofocus: true, placeholder:"test@test.com", autocomplete: "email" %><br />
+        </div>
+      </div>
+    </div>
+
+    <div class="field">
+      <div class = "row">
+        <div class = "col-md-3 offset-md-3 text-light">
+          <span style="color: #000;">パスワード(英数字6桁以上)</span>
+        </div>
+        <div class = "col-md-3">
+          <% if @minimum_password_length %>
+          <% end %>
+          <%= f.password_field :password, class: "form-control", autofocus: true, placeholder:"英数字6桁以上", autocomplete: "new-password" %><br />
+        </div>
+      </div>
+    </div>
+
+    <div class="field">
+      <div class = "row">
+        <div class = "col-md-3 offset-md-3 text-light">
+          <span style="color: #000;">パスワード確認</span>
+        </div>
+        <div class = "col-md-3">
+          <%= f.password_field :password, class: "form-control", autofocus: true, placeholder:"英数字6桁以上", autocomplete: "new-password" %><br />
+        </div>
+      </div>
+    </div>
+    <div class="field">
+      <div class = "row">
+        <div class = "col-1 offset-5">
+          <div class="actions">
+            <%= f.submit "登録", class: "btn btn-success btn-xs"; %>
+          </div>
+        </div>
+      </div>
     </div>
   <% end %>
 </div>
-
-<%= render "admins/shared/links" %>
+<div class="center-block-session" style="margin-bottom: 5%;">
+  <%= render "admins/shared/links" %>
+</div>

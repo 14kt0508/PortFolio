@@ -1,4 +1,4 @@
-class PicUpPerson < ApplicationRecord
+class PickUpPerson < ApplicationRecord
 
 	belongs_to :user
 

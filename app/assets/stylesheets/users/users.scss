@@ -1,3 +1,40 @@
 // Place all the styles related to the Users/users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.user_background {
+	background-image: image-url('user_background.jpg');
+	background-size: cover;
+	background-position: center center;
+	height: auto;
+	margin: 0;
+	min-height: 1100px;
+	min-width: 100%;
+	padding: 30px 0;
+}
+
+[class$="-contents"] {
+  text-align:center;
+}
+
+.center-block{
+	color: #fff;
+	text-align: center;
+	margin-bottom: 30px;
+}
+
+.marker_title{
+	background: linear-gradient(transparent 0%, #fec1fe 200%);
+}
+
+.marker{
+	background: linear-gradient(transparent 0%, #EEEEEE 0%);
+}
+
+.btn-new{
+	margin-bottom: 10px;
+}
+
+.btn-edit{
+	margin-right: 35%;
+}

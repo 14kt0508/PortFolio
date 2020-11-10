@@ -4,8 +4,13 @@ class Admin < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :contacts, dependent: :destroy
+    belongs_to :facility
 
-  validates :facility_name, presence: true, length: {maximum: 30, minimum: 2}
+	has_many :contacts, dependent: :destroy
+
+	validates :first_name, presence: true, format: { with:/\A[ぁ-んァ-ン一-龥]/}
+	validates :first_name_kana, presence: true, format: { with:/\A[ァ-ヶー－]+\z/}
+	validates :family_name, presence: true, format: { with:/\A[ぁ-んァ-ン一-龥]/}
+	validates :family_name_kana, presence: true, format: { with:/\A[ァ-ヶー－]+\z/}
 
 end

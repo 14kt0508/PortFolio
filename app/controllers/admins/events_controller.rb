@@ -12,48 +12,53 @@ class Admins::EventsController < ApplicationController
 
 	def create
 		@event = Event.new(event_params)
-    	if @event.save
-      		flash[:success] = "登録に成功しました"
-      		redirect_to admins_calendars_path(@event)
-    	else
-      		flash.now[:danger]="登録に失敗しました"
-      		render 'new'
-    	end
+    	respond_to do |format|
+      		if @event.save
+      			params[:event][:event_class_names].each do |class_name_id|
+      				if class_name_id != ""
+      					EventClassName.create(event_id: @event.id, class_name_id: class_name_id)
+      				end
+      			end
+		        format.html { redirect_to '/admins/calendars', notice: 'Post was successfully created.' }
+		        format.json { render template: '/admins/calendars', status: :created, location: @event }
+		    else
+		        format.html { render :new }
+		        format.json { render json: @event.errors }
+		    end
+		end
 	end
 
 	def show
 		@event = Event.find(params[:id])
-		@class_names = ClassName.all
-		params[:event][:neme] ? @class_name = params[:event][:name].join(",") : false
+		@class_names = @event.class_names
 	end
 
 	def edit
 		@event = Event.find(params[:id])
 		@class_names = ClassName.all
+	end
+
+	def update
+		@event = Event.find(params[:id])
 		if @event.update(event_params)
       		flash[:success] = "更新に成功しました"
-      		redirect_to admis_calendars_path(@event)
+      		redirect_to admins_calendars_path
     	else
       		flash.now[:danger]="更新に失敗しました"
       		render "edit"
     	end
 	end
 
-	def update
-		@event = Event.find(params[:id])
-	end
-
 	def destroy
 		@event = Event.find(params[:id])
     	@event.destroy
-    	redirect_to admins_calendars_path(@event)
+    	redirect_to admins_calendars_path
 	end
 
 	private
 
 	def event_params
-		params.require(:event).permit(:time, :title, :body)
-		params.require(:class).permit(:name)
+		params.require(:event).permit(:start, :end, :title, :body)
 	end
 
 

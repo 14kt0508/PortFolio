@@ -1,0 +1,38 @@
+ja:
+  activerecord:
+    attributes:
+      admin:
+        facility_id: 施設名
+        family_name: 苗字
+        family_name_kana: 苗字(カナ)
+        first_name: 名前
+        first_name_kana: 名前(カナ)
+      child:
+        family_name: "苗字"
+        family_name_kana: 苗字(カナ)
+        first_name: 名前
+        first_name_kana: 名前(カナ)
+        birth_date: 生年月日
+        class_name: クラス名
+        pick_up_person: お迎え者
+        pick_up_time: お迎え時間
+        allergies: アレルギー
+        remarks: 特記事項
+      contact:
+        title: 件名
+        body: 内容
+      event:
+        title: イベント名
+        start: 開始時間
+        end: 終了時間
+        body: 内容
+      pick_up_person:
+        family_name: "苗字"
+        family_name_kana: 苗字(カナ)
+        first_name: 名前
+        first_name_kana: 名前(カナ)
+        birth_date: 生年月日
+        post_code: 郵便番号
+        address: 住所
+        telephone: 電話番号
+        relationship: 関係性

@@ -1,40 +1,56 @@
-<%= form_for @contact, url: {action: 'confirm'} do |f| %>
-  <% if @task.errors.any? %>
-
-  <div class="field">
-    <%= f.label :time %><br>
-    <%= f.text_field :time %>
+<div class="container-fluid"  style="margin-bottom: 50px;">
+  <div class="center-block">
+    <h2 class="contact_title">新規連絡</h2>
+  </div>
+  <div class="center-block" style="margin-top: 20px">
+    <%= link_to "連絡履歴", admins_contacts_path, class: "btn btn-primary col-xs-12"; %>
   </div>
 
+  <%= form_for @contact, url: {action: 'confirm'} do |f| %>
+    <% if @contact.errors.any? %>
+    <% end %>
 
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
+  <div class="center-block-contact">
+    <div class="field">
+        <h4 class="contact_style">対象クラス</h4>
+        <%= collection_check_boxes(:contact_to,:class_name_ids, @class_names, :id, :name) %>
+
+        <h4 class="contact_style">対象保護者</h4>
+        <%= collection_check_boxes(:contact_to,:user_ids,@users, :id, :family_name)  %>
+
+    </div>
+
+
+    <div class="field">
+      <h4 class="contact_style">件名</h4>
+      <%= f.text_field :title %>
+    </div>
+
+    <div class="field">
+      <h4 class="contact_style">内容</h4>
+      <%= f.text_area :body, size: "40x5" %>
+    </div>
+
+    <div class="new-form" style="margin-top: 20px">
+      <img src="" id="preview" style="width: 10%; margin-bottom: 20px"><br>
+      <%= f.attachment_field :image, id: "file_btn" %><br />
+    </div>
+
+    <div class="actions" style ="margin-top: 20px">
+      <%= f.submit '確認する', class: "btn btn-contact btn-xs" %>
+    </div>
+
+  <% end %>
   </div>
+</div>
 
-  <div class="field">
-    <%= f.label :body %><br>
-    <%= f.text_area :body %>
-  </div>
-
-  <div class="item-new-form">
-    <%= f.attachment_field :image, id: "file_btn" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit '確認する' %>
-  </div>
-<% end %>
-<% end %>
-
-<!--
 <script type="text/javascript">
 $(function() {
  function readURL(input) {
    if (input.files && input.files[0]) {
      var reader = new FileReader();
      reader.onload = function (e) {
-       $('#').attr('src', e.target.result);
+       $('#preview').attr('src', e.target.result);
      }
      reader.readAsDataURL(input.files[0]);
    }
@@ -43,4 +59,4 @@ $(function() {
    readURL(this);
  });
 });
-</script> -->
+</script>

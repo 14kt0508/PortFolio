@@ -1,11 +1,22 @@
 class Users::ContactsController < ApplicationController
 
 	def index
-		@contacts = Contact.all
+		@contacts = Contact.all.page(params[:page])
 	end
 
 	def show
-		@contacts = Contact.find(params[:id])
+        @contact = Contact.find(params[:id])
+        contact_tos = @contact.contact_tos
+        @class_names = []
+        contact_tos.each do |contact_to|
+            @class_names.push(contact_to.class_name)
+        end
 	end
+
+	private
+
+	def contact_params
+        params.require(:contact).permit(:title, :body, :image)
+    end
 
 end

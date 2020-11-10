@@ -12,7 +12,7 @@
 //
 //= require rails-ujs
 //= require activestorage
-//= require jquery3
+//= require jquery
 //= require turbolinks
 //= require popper
 //= require bootstrap-sprockets
@@ -20,6 +20,32 @@
 //= require fullcalendar
 //= require fullcalendar/locale-all
 //= require_tree .
+
+$(document).on('turbolinks:load', function() {
+  $("#theTarget").skippr({
+    // スライドショーの変化 ("fade" or "slide")
+    transition : 'fade',
+    // 変化に係る時間(ミリ秒)
+    speed : 700,
+    // easingの種類
+    easing : 'easeOutQuart',
+    // ナビゲーションの形("block" or "bubble")
+    navType : 'block',
+    // 子要素の種類("div" or "img")
+    childrenElementType : 'div',
+    // ナビゲーション矢印の表示(trueで表示)
+    arrows : true,
+    // スライドショーの自動再生(falseで自動再生なし)
+    autoPlay : true,
+    // 自動再生時のスライド切替間隔(ミリ秒)
+    autoPlayDuration : 3000,
+    // キーボードの矢印キーによるスライド送りの設定(trueで有効)
+    keyboardOnAlways : true,
+    // 一枚目のスライド表示時に戻る矢印を表示するかどうか(falseで非表示)
+    hidePrevious : false
+  });
+});
+
 
 $(document).on('turbolinks:load', function () {
     // 画面遷移を検知
@@ -30,16 +56,6 @@ $(document).on('turbolinks:load', function () {
             //return $('#calendar').fullCalendar({});
             return $('#calendar').fullCalendar({
                 events: '/events.json',
-                // events: [
-                //     {
-                //         "id":"1",
-                //         "title":"タイトル",
-                //         "description":"説明",
-                //         "start": new Date('2020-10-25'),
-                //         "end":new Date('2020-10-25'),
-                //         "url":"some_address"
-                //     }
-                // ],
                 //カレンダー上部を年月で表示させる
                 titleFormat: 'YYYY年 M月',
                 //曜日を日本語表示
@@ -67,13 +83,22 @@ $(document).on('turbolinks:load', function () {
                 //イベントの時間表示を２４時間に
                 timeFormat: "HH:mm",
                 //イベントの色を変える
-                eventColor: '#87cefa',
+                eventColor: '#CCFF66',
                 //イベントの文字色を変える
                 eventTextColor: '#000000',
                 eventRender: function(event, element) {
                     element.css("font-size", "0.8em");
                     element.css("padding", "5px");
+                },
+                eventClick: function(event, jsEvent, view) {
+                //クリックしたイベントのタイトルが取れるよ
+                if ( location.href.match(/admins/)) {
+                    location.href=`/admins/events/${event.id}`;
                 }
+                else{
+                    location.href=`/events/${event.id}`;
+                }
+              }
             });
         }
         function clearCalendar() {

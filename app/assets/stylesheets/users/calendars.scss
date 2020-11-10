@@ -1,3 +1,23 @@
 // Place all the styles related to the Users/calendars controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.fc-sun { color: red; }  /* 日曜日 */
+.fc-sat { color: blue; } /* 土曜日 */
+
+td.fc-sat {
+    background-color: #eaf4ff;
+}
+td.fc-sun, td.fc-hol {
+    background-color: #ffeaea;
+}
+
+.holiday-name {
+    width: 90px;
+    font-size: 13px;
+    color: red;
+}
+
+.calendar_margin{
+	margin: 10px 30px 150px;
+}

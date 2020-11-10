@@ -1,3 +1,82 @@
 // Place all the styles related to the Top controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.top_background {
+	background-image: image-url('top_background.jpg');
+	background-size: cover;
+	background-position: center center;
+	height: auto;
+	min-height: 1100px;
+	min-width: 100%;
+}
+
+#container{
+  	height: 1100px;
+}
+
+.title_name{
+	font-family: 'Noto Serif JP', serif;
+	text-align: center;
+	margin: 300px 0 300px 0;
+	position: center;
+  	color: white;/*文字は白に*/
+  	background: linear-gradient(transparent 0%, #B384FF 100%);
+}
+
+.about {
+	text-align: center;
+	width: 100%;
+	z-index: 10;
+	color: #fff;
+	position: absolute;
+	top: 50%;
+	left: -1%;
+}
+
+.about_title{
+	font-size: 200%;
+	background: linear-gradient(transparent 0%, #aaa 50%);
+}
+.about_body{
+	font-size: 130%;
+	background: linear-gradient(transparent 0%, #aaa 50%);
+}
+
+
+
+.main-visual-text {
+	color: #000;
+}
+.main-visual-image {
+	height: 900px;
+	width: 100%;
+}
+
+.image1 {
+  	background-image: image-url('image1.jpg');
+}
+.image2 {
+  	background-image: image-url('image2.jpg');
+}
+.image3 {
+  	background-image: image-url('image3.jpg');
+}
+.image4 {
+  	background-image: image-url('image4.jpg');
+}
+.image5 {
+  	background-image: image-url('image5.jpg');
+}
+
+
+.center-block{
+	color: #fff;
+	text-align: center;
+}
+
+.btn-top{
+	margin-bottom: 50px;
+}
+

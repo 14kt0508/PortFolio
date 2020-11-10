@@ -1,100 +1,128 @@
-<div class='row'>
-
-  <div class='col-xs-3'>
-    <h2>会員情報</h2>
-    <table class='table'>
-      <tr>
-        <th>氏名</th>
-        <th><%= @user.family_name %><%= @user.first_name %>
-            <%= @user.family_name_kana %><%= @user.first_name_kana %>
-        </th>
-      </tr>
-
-      <tr>
-        <th>住所</th>
-        <th><%= @user.post_code %><%= @user.address %></th>
-      </tr>
-      <tr>
-        <th>緊急連絡先</th>
-        <th><%= @user.telephone %></th>
-      </tr>
-      <tr>
-        <th>メールアドレス</th>
-        <th><%= @user.email %></th>
-      </tr>
-    </table>
-    <%= link_to "編集", edit_user_path, class: "btn btn-primary btn-new-register btn-xs"; %>
+<div class="user_background">
+  <div class="container-fluid" style="margin-bottom: 30px;">
+    <div class="center-block">
+      <h2><span class="marker_title">会員情報</span></h2>
+    </div>
+    <div class='row'>
+      <div class='col-6 offset-3 center-contents'>
+        <div class="table-responsive">
+          <table class='table table-hover'>
+            <tr>
+              <th class="marker">氏名</th>
+              <th class="table-light"><%= @user.family_name %><%= @user.first_name %>
+                    (<%= @user.family_name_kana %><%= @user.first_name_kana %>)
+              </th>
+            </tr>
+            <tr>
+              <th class="marker">住所</th>
+              <th class="table-light">〒<%= @user.post_code %><%= @user.address %></th>
+            </tr>
+            <tr>
+              <th class="marker">緊急連絡先</th>
+              <th class="table-light"><%= @user.telephone %></th>
+            </tr>
+            <tr>
+              <th class="marker">メールアドレス</th>
+              <th class="table-light"><%= @user.email %></th>
+            </tr>
+          </table>
+          <%= link_to "編集", edit_user_path, class: "btn btn-success btn-xs"; %>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
 
-<div class='row'>
-  <div class='col-xs-3'>
-    <h2>送迎者</h2>
-    <%= link_to "新規登録", new_pick_up_person_path, class: "btn btn-primary btn-new-register btn-xs"; %>
-    <table class='table'>
-      <% @pick_up_person.each do |pick_up_person| %>
-        <tr>
-          <th>氏名</th>
-          <th><%= pick_up_person.family_name %><%= pick_up_person.first_name %>
-              <%= pick_up_person.family_name_kana %><%= pick_up_person.first_name_kana %>
-          </th>
-        </tr>
-        <tr>
-          <th>住所</th>
-          <th><%= pick_up_person.post_code %><%= pick_up_person.address %></th>
-        </tr>
-        <tr>
-          <th>生年月日</th>
-          <th><%= children.birth_date %></th>
-        </tr>
-        <tr>
-          <th>緊急連絡先</th>
-          <th><%= pick_up_person.telephone %></th>
-        </tr>
-        <tr>
-          <th>関係性</th>
-          <th><%= pick_up_person.relationship %></th>
-        </tr>
-      <% end %>
-    </table>
-    <%= link_to "編集", edit_pick_up_person_path, class: "btn btn-primary btn-new-register btn-xs"; %>
+  <div class="container-fluid">
+    <div class="center-block">
+      <h2><span class="marker_title" style="margin-top:10px;">送迎者</span></h2>
+      <%= link_to "新規登録", new_pick_up_person_path, class: "btn btn-new btn-xs"; %>
+    </div>
+    <div class='row'>
+      <div class='col-6 offset-3 center-contents'>
+        <div class="table-responsive">
+          <table class='table table-hover'>
+            <% @pick_up_persons.each do |pick_up_person| %>
+              <tr>
+                <th class="marker">氏名</th>
+                <th class="table-light"><%= pick_up_person.family_name %><%= pick_up_person.first_name %>
+                    (<%= pick_up_person.family_name_kana %><%= pick_up_person.first_name_kana %>)
+                </th>
+              </tr>
+              <tr>
+                <th class="marker">住所</th>
+                <th class="table-light">〒<%= pick_up_person.post_code %><%= pick_up_person.address %></th>
+              </tr>
+              <tr>
+                <th class="marker">生年月日</th>
+                <th class="table-light"><%= pick_up_person.birth_date.strftime("%Y年%m月%d日") %></th>
+              </tr>
+              <tr>
+                <th class="marker">緊急連絡先</th>
+                <th class="table-light"><%= pick_up_person.telephone %></th>
+              </tr>
+              <tr>
+                <th class="marker">関係性</th>
+                <th class="table-light"><%= pick_up_person.relationship %></th>
+              </tr>
+              <tr>
+              <th></th>
+              <th><%= link_to "編集", edit_pick_up_person_path(pick_up_person), class: "btn btn-edit btn-xs"; %>
+                  <%= link_to "削除", pick_up_person_path(pick_up_person), method: :delete, class: "btn btn-edit btn-xs"; %></th>
+              </tr>
+            <% end %>
+          </table>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
-<div class='row'>
-  <div class='col-xs-3'>
-    <h2>お子さんの情報</h2>
-        <%= link_to "新規登録", new_child_path, class: "btn btn-primary btn-new-register btn-xs"; %>
-    <table class='table'>
-      <% @children.each do |children| %>
-        <tr>
-          <th>氏名</th>
-          <th><%= children.family_name %><%= children.first_name %>
-              <%= children.family_name_kana %><%= children.first_name_kana %>
-          </th>
-        </tr>
-        <tr>
-          <th>生年月日</th>
-          <th><%= children.birth_date %></th>
-        </tr>
-        <tr>
-          <th>クラス</th>
-          <th><%= children.class_name %></th>
-        <tr>
-          <th>送迎者</th>
-          <th><%= children.pick_up_person %></th>
-        </tr>
-        <tr>
-          <th>お迎え時間</th>
-          <th><%= children.pick_up_time %></th>
-        </tr>
-          <th>アレルギー</th>
-          <th><%= children.allergies %></th>
-        </tr>
-          <th>特記事項</th>
-          <th><%= children.remarks %></th>
-        </tr>
-      <% end %>
-    </table>
-    <%= link_to "編集", edit_child_path, class: "btn btn-primary btn-new-register btn-xs"; %>
+  <div class="container-fluid" style="margin-bottom: 30px;">
+    <div class="center-block">
+      <h2><span class="marker_title">お子さんの情報</span></h2>
+      <%= link_to "新規登録", new_child_path, class: "btn btn-new btn-xs"; %>
+    </div>
+      <div class='row'>
+        <div class='col-6 offset-3 center-contents'>
+          <div class="table-responsive">
+            <table class='table table-hover'>
+              <% if @children.present? %>
+                <% @children.each do |children| %>
+                  <tr>
+                    <th class="marker">氏名</th>
+                    <th class="table-light"><%= children.family_name %><%= children.first_name %>
+                        (<%= children.family_name_kana %><%= children.first_name_kana %>)
+                    </th>
+                  </tr>
+                  <tr>
+                    <th class="marker">生年月日</th>
+                    <th class="table-light"><%= children.birth_date.strftime("%Y年%m月%d日") %></th>
+                  </tr>
+                  <tr>
+                    <th class="marker">クラス</th>
+                    <th class="table-light"><%= children.class_name.name %></th>
+                  <tr>
+                    <th class="marker">送迎者</th>
+                    <th class="table-light"><%= children.pick_up_person %></th>
+                  </tr>
+                  <tr>
+                    <th class="marker">お迎え時間</th>
+                    <th class="table-light"><%= children.pick_up_time.strftime("%H時%M分") %></th>
+                  </tr>
+                    <th class="marker">アレルギー</th>
+                    <th class="table-light"><%= children.allergies %></th>
+                  </tr>
+                    <th class="marker">特記事項</th>
+                    <th class="table-light"><%= children.remarks %></th>
+                  </tr>
+                  <th></th>
+                  <th><%= link_to "編集", edit_child_path(children), class: "btn btn-edit btn-xs"; %>
+                    <%= link_to "削除", child_path(children), method: :delete, class: "btn btn-edit btn-xs"; %>
+                  </th>
+                <% end %>
+              <% end %>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
