@@ -1,46 +1,48 @@
-<div class="center-block"  style="margin-bottom: 50px;">
-  <h1 class="contact_title">連絡詳細</h1>
-</div>
+<div class="container-fluid"  style="margin-bottom: 50px;">
+  <div class="center-block">
+    <h1 class="contact_title">連絡詳細</h1>
+  </div>
 
-<div class="center-block">
-  <div class='row'>
-    <div class='col-6 offset-3 center-contents'>
-      <div class="table-responsive">
-        <table class='table table-hover'>
+  <div class="center-block">
+    <div class='row'>
+      <div class='col-6 offset-3 center-contents'>
+        <div class="table-responsive">
+          <table class='table table-hover'>
 
-          <tr>
-            <th class="marker_contact">日付</th>
-            <th class="contact_style"><%= @contact.created_at.strftime('%Y/%m/%d') %></th>
-          </tr>
+            <tr>
+              <th class="marker_contact">日付</th>
+              <th class="contact_style"><%= @contact.created_at.strftime('%Y/%m/%d') %></th>
+            </tr>
 
-          <tr>
-            <th class="marker_contact">対象クラス</th>
-            <th class="contact_style">
-              <% @class_names.each_with_index do |class_name,i| %>
-                <%= i==0? '':',' %>
-                  <%= class_name.name %>
-              <% end %>
-            </th>
-          </tr>
+            <tr>
+              <th class="marker_contact">対象クラス</th>
+              <th class="contact_style">
+                <% @class_names.each_with_index do |class_name,i| %>
+                  <%= i==0? '':',' %>
+                    <%= class_name.name %>
+                <% end %>
+              </th>
+            </tr>
 
-          <tr>
-            <th class="marker_contact">件名</th>
-            <th class="contact_style"><%= @contact.title %></th>
-          </tr>
+            <tr>
+              <th class="marker_contact">件名</th>
+              <th class="contact_style"><%= @contact.title %></th>
+            </tr>
 
-          <tr>
-            <th class="marker_contact">内容</th>
-            <th class="contact_style"><%= @contact.body %>
-            </th>
-          </tr>
+            <tr>
+              <th class="marker_contact">内容</th>
+              <th class="contact_style"><%= @contact.body %>
+              </th>
+            </tr>
 
-          <tr>
-            <th class="marker_contact">image</th>
-            <th class="contact_style"><%= attachment_image_tag @contact,:image %>
-            </th>
-          </tr>
-        </table>
-        <%= link_to "戻る", admins_contacts_path, class: "btn btn-primary btn-xs"; %>
+            <tr>
+              <th class="marker_contact">添付画像</th>
+              <th class="contact_style"><%= attachment_image_tag @contact,:image, style: "width:100%;" %>
+              </th>
+            </tr>
+          </table>
+          <%= link_to "戻る", admins_contacts_path, class: "btn btn-contact btn-xs"; %>
+        </div>
       </div>
     </div>
   </div>

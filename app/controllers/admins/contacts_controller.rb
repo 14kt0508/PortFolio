@@ -16,7 +16,7 @@ class Admins::ContactsController < ApplicationController
         @contact.admin_id = current_admin.id
         @user_ids = params[:contact_to][:user_ids]
         @class_name_ids = params[:contact_to][:class_name_ids]
-        @image_path = contact_params[:image].empty? ? {} : contact_params[:image].path
+        @image_path = contact_params[:image]#.empty? ? {} : contact_params[:image].path
 		render :new if @contact.invalid?
 	end
 
