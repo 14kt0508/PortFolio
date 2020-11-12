@@ -1,5 +1,7 @@
 class Users::ChildrenController < ApplicationController
 
+	before_action :authenticate_user!
+
 	def new
 		@children = Child.new
 	end
@@ -9,7 +11,7 @@ class Users::ChildrenController < ApplicationController
 		@children.user_id = current_user.id
 	    if @children.save
 	      flash[:success] = "登録に成功しました"
-	      redirect_to user_path(@children)
+	      redirect_to user_path
 	    else
 	      flash.now[:danger]="登録に失敗しました"
 	      render 'new'
@@ -25,7 +27,7 @@ class Users::ChildrenController < ApplicationController
 		@children = Child.find(params[:id])
 	    if @children.update(pick_up_person_params)
 	      flash[:success] = "情報が更新されました"
-	      redirect_to user_path_path(@children)
+	      redirect_to user_path_path
 	    else
 	      flash.now[:danger]="更新に失敗しました"
 	      render 'new'
@@ -33,9 +35,8 @@ class Users::ChildrenController < ApplicationController
 	end
 
 	def destroy
-		@children = Child.all
 		@children = Child.find(params[:id])
-		@children = destroy
+		@children.destroy
 		flash[:success] = "情報が削除されました"
   		redirect_to user_path
 	end

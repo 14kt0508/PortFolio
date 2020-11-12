@@ -26,7 +26,7 @@
             <li class="nav-list-item"><%= link_to '職員一覧', admins_admins_path(current_admin) %></li>
             <li class="nav-list-item"><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %></li>
           <% elsif user_signed_in? %>
-            <li class="nav-list-item"><%= link_to 'マイページ', user_path(current_user) %></li>
+            <li class="nav-list-item"><%= link_to 'マイページ', user_path %></li>
             <li class="nav-list-item"><%= link_to '予定表', calendars_path %></li>
             <li class="nav-list-item"><%= link_to '連絡網', contacts_path %></li>
             <li class="nav-list-item"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>

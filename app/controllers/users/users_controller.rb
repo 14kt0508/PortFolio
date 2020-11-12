@@ -1,23 +1,19 @@
 class Users::UsersController < ApplicationController
 
-	def index
-		@users =User.all
-		@children = Child.all
-		@pick_up_person = Pick_up_person.all
-	end
+	before_action :authenticate_user!
 
 	def show
-		@user = User.find(params[:id])
+		@user = current_user
 		@children = @user.children
 		@pick_up_persons = @user.pick_up_persons
 	end
 
 	def edit
-		@user = User.find(params[:id])
+		@user = current_user
 	end
 
 	def update
-		@user = User.find(params[:id])
+		@user = current_user
 		if @user.update(user_params)
 			flash[:change] = "会員情報を更新しました"
 			redirect_to user_path
@@ -28,7 +24,7 @@ class Users::UsersController < ApplicationController
 	end
 
 	def destroy
-		@user = User.find(params[:id])
+		@user = current_user
 		@user.destroy
 		flash[:success] = "情報が削除されました"
   		redirect_to root_path

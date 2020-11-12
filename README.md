@@ -26,13 +26,13 @@
 ### 機能一覧
 https://docs.google.com/spreadsheets/d/1RKyspYeILRCNkHDuOnnY-qTfjDXM0pzH37Anp5hxh38/edit#gid=14448558
 
-## 開発環境（仮）
+## 開発環境
 - OS：Linux(CentOS)
-- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- 言語：HTML,CSS,JavaScript,Ruby
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
 - 仮想環境：Vagrant,VirtualBox
 
-## 使用素材（仮）
-- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。
-- 使用しない場合は、使用素材の項目をREADMEから削除してください。
+## 使用素材
+- 画像「ぱくたそ」(https://www.pakutaso.com)
+- 画像「O-DAN」(https://o-dan.net/ja/)

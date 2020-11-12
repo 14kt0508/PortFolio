@@ -27,12 +27,13 @@ Rails.application.routes.draw do
       			post 'confirm'
     		end
     	end
+    	get 'children/search' => 'children#search', as: 'search'
 	end
 
 
 
 	scope module: :users do
-		resources :users, only: [:show, :edit, :update, :destroy]
+		resource :user, only: [:show, :edit, :update, :destroy]
 		get 'users/complete'
 		resources :children, only: [:new, :create, :edit, :update, :destroy]
 		resources :pick_up_persons, only: [:new, :create, :edit, :update, :destroy]
