@@ -1,5 +1,7 @@
 class Users::PickUpPersonsController < ApplicationController
 
+	before_action :authenticate_user!
+
 	def new
 		@pick_up_person = PickUpPerson.new
 	end
@@ -9,7 +11,7 @@ class Users::PickUpPersonsController < ApplicationController
 		@pick_up_person.user_id = current_user.id
 		if @pick_up_person.save(pick_up_person_params)
 	      flash[:success] = "登録に成功しました"
-	      redirect_to user_path(current_user)
+	      redirect_to user_path
 	    else
 	      flash.now[:danger]="登録に失敗しました"
 	      render 'new'
@@ -25,7 +27,7 @@ class Users::PickUpPersonsController < ApplicationController
 		@pick_up_person = PickUpPerson.find(params[:id])
 		if @pick_up_person.update(pick_up_person_params)
 	      flash[:success] = "情報が更新されました"
-	      redirect_to user_path(@pick_up_person)
+	      redirect_to user_path
 	    else
 	      flash.now[:danger]="更新に失敗しました"
 	      render 'new'

@@ -1,0 +1,48 @@
+<div class="container-fluid" style="margin-bottom: 50px;">
+    <div class="center-block">
+      <h2 class="children_title">子ども一覧</h2>
+    </div>
+    <%= render "class_name_search" %>
+    <div class='col-10 offset-1 center-contents'>
+	    <div class="table-responsive">
+	        <table class='table table-hover'>
+				<thead class="thead-light">
+					<tr>
+						<th>園児名</th>
+						<th>生年月日</th>
+						<th>お迎え者</th>
+						<th>お迎え時間</th>
+					</tr>
+				</thead>
+					<% @records.each do |class_name| %>
+					<tbody>
+						<h4><%= class_name.name %></h4>
+						
+							<% class_name.children.each do |child| %>
+							<tr>
+								<td>
+									<%= link_to admins_user_path(child.user_id) do %>
+										<%= child.family_name %><%= child.first_name %>
+										(<%= child.family_name_kana %><%= child.first_name_kana %>)
+			            			<% end %>
+			            		</td>
+			            		<td>
+									<%= child.birth_date.strftime("%Y年%m月%d日") %>
+								</td>
+								<td>
+									<%= child.pick_up_person %>
+								</td>
+								<td>
+									<%= child.pick_up_time.strftime("%H時%M分") %>
+								</td>
+							</tr>
+							<% end %>
+						
+							</tbody>
+					<% end %>
+					<%#= paginate @children %>
+			
+			</table>
+		</div>
+	</div>
+</div>

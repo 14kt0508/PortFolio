@@ -1,0 +1,11 @@
+<%#= form_tag :class_names, method: :get, class: "search" do %>
+  <%#= text_field_tag "q", params[:q] %>
+  <%#= submit_tag "検索" %>
+<%# end %>
+<%= form_tag(admins_search_path, method: :get) do %>
+   <%= collection_select(:name, :content, ClassName.all, :name, :name,
+                                  {},
+                                  {class: ""}) %>
+
+    <%= submit_tag '検索' %>
+<% end %>

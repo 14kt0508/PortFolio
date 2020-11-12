@@ -94,6 +94,20 @@ Child.create!(
 )
 
 Child.create!(
+	user_id: 1,
+	family_name:'山田',
+	first_name:'二郎',
+	family_name_kana:'ヤマダ',
+	first_name_kana:'ジロウ',
+	birth_date:Time.new(2020, 4, 3, 0, 0, 0, 0),
+	class_name_id: 2,
+	pick_up_person:'母',
+	pick_up_time:Time.new(2012, 6, 30, 16, 0, 0, 0),
+	allergies:'特になし',
+	remarks: '特になし'
+)
+
+Child.create!(
 	user_id: 2,
 	family_name:'高橋',
 	first_name:'壮太',
