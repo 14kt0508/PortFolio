@@ -19,7 +19,7 @@ ClassName.create(name: "つき")
 ClassName.create(name: "うちゅう")
 
 
-Admin.create!(
+admin=Admin.create!(
 	facility_id: 1,
 	email: "admin@test.com",
 	password: "123456",
@@ -129,6 +129,7 @@ Event.create(
 )
 
 Contact.create(
+	admin_id: admin.id,
 	title: "test",
 	body: "test"
 )

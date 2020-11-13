@@ -15,8 +15,8 @@
         <h4 class="contact_style">対象クラス</h4>
         <%= collection_check_boxes(:contact_to,:class_name_ids, @class_names, :id, :name) %>
 
-        <h4 class="contact_style">対象保護者</h4>
-        <%= collection_check_boxes(:contact_to,:user_ids,@users, :id, :family_name)  %>
+        <!-- <h4 class="contact_style">対象保護者</h4> -->
+        <%#= collection_check_boxes(:contact_to,:user_ids,@users, :id, :family_name)  %>
 
     </div>
 
