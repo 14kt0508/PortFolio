@@ -13,7 +13,6 @@
 						<th>メールアドレス</th>
 					</tr>
 				</thead>
-
 				<tbody>
 					<% @users.each do |user| %>
 						<tr>
@@ -22,15 +21,12 @@
 									<%= user.family_name %><%= user.first_name %>
 		            			<% end %>
 							</td>
-
 							<td>
 								<%= user.post_code %><%= user.address %>
 							</td>
-
 							<td>
 								<%= user.telephone %>
 							</td>
-
 							<td>
 								<%= user.email %>
 							</td>

@@ -1,11 +1,10 @@
 class Admin < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  	devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
     belongs_to :facility
-
 	has_many :contacts, dependent: :destroy
 
 	validates :first_name, presence: true, format: { with:/\A[ぁ-んァ-ン一-龥]/}

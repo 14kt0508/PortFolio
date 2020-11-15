@@ -19,27 +19,21 @@
         <%#= collection_check_boxes(:contact_to,:user_ids,@users, :id, :family_name)  %>
 
     </div>
-
-
     <div class="field">
       <h4 class="contact_style">件名</h4>
       <%= f.text_field :title %>
     </div>
-
     <div class="field">
       <h4 class="contact_style">内容</h4>
       <%= f.text_area :body, size: "40x5" %>
     </div>
-
     <div class="new-form" style="margin-top: 20px">
       <img src="" id="preview" style="width: 10%; margin-bottom: 20px"><br>
       <%= f.attachment_field :image, id: "file_btn" %><br />
     </div>
-
     <div class="actions" style ="margin-top: 20px">
       <%= f.submit '確認する', class: "btn btn-contact btn-xs" %>
     </div>
-
   <% end %>
   </div>
 </div>

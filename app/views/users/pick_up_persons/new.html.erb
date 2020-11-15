@@ -3,7 +3,6 @@
     <div class="center-block">
       <h2><span class="marker_title">送迎者情報登録</span></h2>
     </div>
-    <p id="notice"><%= notice %></p>
   	<%= form_with model: @pick_up_person, url: pick_up_persons_path, method: :post ,local:true do |f| %>
   	 <%= render 'layouts/errors', model: f.object %>
   	  <div class='col-6 offset-3 center-contents'>
