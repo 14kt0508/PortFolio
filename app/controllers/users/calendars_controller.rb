@@ -1,7 +1,6 @@
 class Users::CalendarsController < ApplicationController
 
 	def index
-		# @calrendars = Calendaer.all
 		@events = Event.all
 		respond_to do |format|
 	    	format.html # index.html.erb
