@@ -24,13 +24,16 @@ class Admins::ContactsController < ApplicationController
 		@contact = Contact.new(contact_params)
         @contact.admin_id = current_admin.id
 		if @contact.save
+            tags = Vision.get_image_data(@contact.image)
+            tags.each do |tag|
+                @contact.tags.create(name: tag)
+            end
             params[:class_name_id].split(' ').map{|class_name_id|
                 ContactTo.create(contact_id:@contact.id,class_name_id:class_name_id)
             }
             params[:user_id].split(' ').map{|user_id|
                 ContactTo.create(contact_id:@contact.id,user_id:user_id)
             }
-
       		flash[:success] = "送信に成功しました"
       		redirect_to admins_contacts_path
     	else
