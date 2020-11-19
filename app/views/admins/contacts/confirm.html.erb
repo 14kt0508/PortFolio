@@ -3,32 +3,33 @@
     <h2 class="contact_title">連絡確認</h2>
   </div>
 
-<%= form_for @contact, url: admins_contacts_path do |f| %>
-  <div class="center-block">
+  <%= form_for @contact, url: admins_contacts_path do |f| %>
+    <div class="center-block">
 
-    <div class="field">
-      <h4 class="contact_style">件名</h4>
-      <h5 class="contact_style"><%= @contact.title %></h5>
-    </div>
+      <div class="field">
+        <h4 class="contact_style">件名</h4>
+        <h5 class="contact_style"><%= @contact.title %></h5>
+      </div>
 
-    <div class="field">
-      <h4 class="contact_style">内容</h4>
-      <div class="contact_style"><%= @contact.body %></div>
-    </div>
-    <%= f.hidden_field :title, :value => @contact.title %>
-    <%= f.hidden_field :body,:value => @contact.body %>
-    <%= hidden_field_tag(:class_name_id, @class_name_ids) %>
-    <%= hidden_field_tag(:user_id, @user_ids) %>
-    <%#= f.attachment_field :image ,value:@image_path %>
-    <%= attachment_image_tag @contact,:image, style: "width:50%;" %>
-    <% if f.object.image.present? %>
-        <%= f.hidden_field :image, value: f.object.image_attacher.data.to_json %>
-    <% end %>
-    <div class="actions">
-      <div class="contact_btn">
-        <%= f.submit '送信', class: "btn btn-primary" %>
-        <%= link_to '戻る', new_admins_contact_path, class: "btn btn-primary"%>
+      <div class="field">
+        <h4 class="contact_style">内容</h4>
+        <div class="contact_style"><%= @contact.body %></div>
+      </div>
+      <%= f.hidden_field :title, :value => @contact.title %>
+      <%= f.hidden_field :body,:value => @contact.body %>
+      <%= hidden_field_tag(:class_name_id, @class_name_ids) %>
+      <%= hidden_field_tag(:user_id, @user_ids) %>
+      <%#= f.attachment_field :image ,value:@image_path %>
+      <%= attachment_image_tag @contact,:image, style: "width:50%;" %>
+      <% if f.object.image.present? %>
+          <%= f.hidden_field :image, value: f.object.image_attacher.data.to_json %>
+      <% end %>
+      <div class="actions">
+        <div class="contact_btn">
+          <%= f.submit '送信', class: "btn btn-primary" %>
+          <%= link_to '戻る', new_admins_contact_path, class: "btn btn-primary"%>
+        </div>
       </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>
